@@ -1,0 +1,20 @@
+{
+    "name": "spacecycle/ubt",
+    "type": "library",
+    "description": "User behavior data sdk",
+    "authors": [
+        {
+            "name": "Walle",
+            "email": "Walle.Wang@withinspace.com"
+        }
+    ],
+    "require": {
+        "apache/log4php": "2.3.0",
+        "laravel/framework": "~7.15"
+    },
+    "autoload": {
+        "psr-4": {
+            "SpaceCycle\\": "src/"
+        }
+    }
+}
