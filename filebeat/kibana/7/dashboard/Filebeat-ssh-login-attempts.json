@@ -1,0 +1,123 @@
+{
+    "objects": [
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"system.auth.ssh.event:Accepted\", \"language\": \"kuery\"}, \"highlightAll\": true}"
+                },
+                "title": "Successful SSH logins [Filebeat System] ECS",
+                "uiStateJSON": "{\"vis\": {\"colors\": {\"publickey\": \"#629E51\", \"Accepted\": \"#3F6833\", \"Invalid\": \"#447EBC\", \"password\": \"#BF1B00\", \"Failed\": \"#F9934E\"}}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"params\": {\"field\": \"@timestamp\", \"min_doc_count\": 1, \"extended_bounds\": {}, \"interval\": \"auto\", \"customInterval\": \"2h\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"system.auth.ssh.method\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"listeners\": {}, \"title\": \"Successful SSH logins ECS\", \"params\": {\"times\": [], \"setYExtents\": false, \"defaultYExtents\": false, \"mode\": \"stacked\", \"addTimeMarker\": false, \"scale\": \"linear\", \"addLegend\": true, \"legendPosition\": \"right\", \"addTooltip\": true}, \"type\": \"histogram\"}"
+            },
+            "id": "d16bb400-f9cc-11e6-8115-a7c18106d86a-ecs",
+            "type": "visualization",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"highlightAll\": true}"
+                },
+                "title": "SSH login attempts [Filebeat System] ECS",
+                "uiStateJSON": "{\"vis\": {\"colors\": {\"Accepted\": \"#3F6833\", \"Invalid\": \"#447EBC\", \"Failed\": \"#F9934E\"}}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"params\": {\"field\": \"@timestamp\", \"min_doc_count\": 1, \"extended_bounds\": {}, \"interval\": \"auto\", \"customInterval\": \"2h\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"system.auth.ssh.event\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"listeners\": {}, \"title\": \"SSH login attempts ECS\", \"params\": {\"times\": [], \"setYExtents\": false, \"defaultYExtents\": false, \"mode\": \"stacked\", \"addTimeMarker\": false, \"scale\": \"linear\", \"addLegend\": true, \"legendPosition\": \"right\", \"addTooltip\": true}, \"type\": \"histogram\"}"
+            },
+            "id": "78b74f30-f9cd-11e6-8115-a7c18106d86a-ecs",
+            "type": "visualization",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"system.auth.ssh.event:Failed OR system.auth.ssh.event:Invalid\", \"language\": \"kuery\"}, \"highlightAll\": true}"
+                },
+                "title": "SSH users of failed login attempts [Filebeat System] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 50, \"field\": \"user.name\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"listeners\": {}, \"title\": \"SSH users of failed login attempts ECS\", \"params\": {\"minFontSize\": 18, \"maxFontSize\": 72, \"scale\": \"linear\", \"orientation\": \"single\"}, \"type\": \"tagcloud\"}"
+            },
+            "id": "341ffe70-f9ce-11e6-8115-a7c18106d86a-ecs",
+            "type": "visualization",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"system.auth.ssh.event:Failed OR system.auth.ssh.event:Invalid\", \"language\": \"kuery\"}, \"highlightAll\": true}"
+                },
+                "title": "SSH failed login attempts source locations [Filebeat System] ECS",
+                "uiStateJSON": "{\"mapZoom\": 2, \"mapCenter\": [17.602139123350838, 69.697265625]}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"geohash_grid\", \"params\": {\"autoPrecision\": true, \"field\": \"source.geo.location\", \"precision\": 2}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"listeners\": {}, \"title\": \"SSH failed login attempts source locations ECS\", \"params\": {\"heatNormalizeData\": true, \"heatMinOpacity\": 0.1, \"addTooltip\": true, \"mapZoom\": 2, \"heatBlur\": 15, \"wms\": {\"url\": \"https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WMSServer\", \"options\": {\"layers\": \"0\", \"format\": \"image/png\", \"transparent\": true, \"styles\": \"\", \"version\": \"1.3.0\", \"attribution\": \"Maps provided by USGS\"}, \"enabled\": false}, \"legendPosition\": \"bottomright\", \"mapCenter\": [15, 5], \"heatMaxZoom\": 16, \"isDesaturated\": true, \"mapType\": \"Shaded Circle Markers\", \"heatRadius\": 25}, \"type\": \"tile_map\"}"
+            },
+            "id": "3cec3eb0-f9d3-11e6-8a3e-2b904044ea1d-ecs",
+            "type": "visualization",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "columns": [
+                    "system.auth.ssh.event",
+                    "system.auth.ssh.method",
+                    "user.name",
+                    "source.ip",
+                    "source.geo.country_iso_code"
+                ],
+                "description": "",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"event.dataset:system.auth AND system.auth.ssh.event:*\", \"language\": \"kuery\"}, \"highlightAll\": true}"
+                },
+                "sort": [
+                    "@timestamp",
+                    "desc"
+                ],
+                "title": "SSH login attempts [Filebeat System] ECS",
+                "version": 1
+            },
+            "id": "62439dc0-f9c9-11e6-a747-6121780e0414-ecs",
+            "type": "search",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{}"
+                },
+                "title": "Dashboards [Filebeat System] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [], \"type\": \"markdown\", \"title\": \"Dashboards [Filebeat System] ECS\", \"params\": {\"fontSize\": 12, \"markdown\": \"[Syslog](#/dashboard/Filebeat-syslog-dashboard-ecs) | [Sudo commands](#/dashboard/277876d0-fa2c-11e6-bbd3-29c986c96e5a-ecs) | [SSH logins](#/dashboard/5517a150-f9ce-11e6-8115-a7c18106d86a-ecs) | [New users and groups](#/dashboard/0d3f2380-fa78-11e6-ae9b-81e5311e8cab-ecs)\"}}"
+            },
+            "id": "327417e0-8462-11e7-bab8-bd2f0fb42c54-ecs",
+            "type": "visualization",
+            "version": 1
+        },
+        {
+            "attributes": {
+                "description": "SSH dashboard for the System module in Filebeat",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"highlightAll\": true, \"version\": true}"
+                },
+                "optionsJSON": "{\"darkTheme\": false}",
+                "panelsJSON": "[{\"type\": \"visualization\", \"size_y\": 3, \"col\": 1, \"size_x\": 12, \"row\": 5, \"panelIndex\": 1, \"id\": \"d16bb400-f9cc-11e6-8115-a7c18106d86a-ecs\"}, {\"type\": \"visualization\", \"size_y\": 3, \"col\": 1, \"size_x\": 12, \"row\": 2, \"panelIndex\": 2, \"id\": \"78b74f30-f9cd-11e6-8115-a7c18106d86a-ecs\"}, {\"type\": \"visualization\", \"size_y\": 4, \"col\": 1, \"size_x\": 6, \"row\": 8, \"panelIndex\": 3, \"id\": \"341ffe70-f9ce-11e6-8115-a7c18106d86a-ecs\"}, {\"type\": \"visualization\", \"size_y\": 4, \"col\": 7, \"size_x\": 6, \"row\": 8, \"panelIndex\": 4, \"id\": \"3cec3eb0-f9d3-11e6-8a3e-2b904044ea1d-ecs\"}, {\"type\": \"search\", \"columns\": [\"system.auth.ssh.event\", \"system.auth.ssh.method\", \"user.name\", \"source.ip\", \"source.geo.country_iso_code\"], \"col\": 1, \"size_y\": 3, \"size_x\": 12, \"row\": 12, \"sort\": [\"@timestamp\", \"desc\"], \"panelIndex\": 5, \"id\": \"62439dc0-f9c9-11e6-a747-6121780e0414-ecs\"}, {\"type\": \"visualization\", \"size_y\": 1, \"col\": 1, \"size_x\": 12, \"row\": 1, \"panelIndex\": 6, \"id\": \"327417e0-8462-11e7-bab8-bd2f0fb42c54-ecs\"}]",
+                "timeRestore": false,
+                "title": "[Filebeat System] SSH login attempts ECS",
+                "uiStateJSON": "{\"P-4\": {\"mapZoom\": 3, \"mapCollar\": {\"top_left\": {\"lat\": 85.593335, \"lon\": -79.189455}, \"zoom\": 3, \"bottom_right\": {\"lat\": -14.777884999999998, \"lon\": 125.771485}}, \"mapBounds\": {\"top_left\": {\"lat\": 60.50052541051131, \"lon\": -27.94921875}, \"bottom_right\": {\"lat\": 10.31491928581316, \"lon\": 74.53125}}, \"mapCenter\": [39.774769485295465, 23.203125]}}",
+                "version": 1
+            },
+            "id": "5517a150-f9ce-11e6-8115-a7c18106d86a-ecs",
+            "type": "dashboard",
+            "version": 7
+        }
+    ],
+    "version": "6.0.0-beta1-SNAPSHOT"
+}

@@ -1,0 +1,167 @@
+{
+    "objects": [
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "title": "Message Types Timeline [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {\"customLabel\": \"\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"significant_terms\", \"params\": {\"size\": 15, \"field\": \"nats.log.msg.type\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"line\", \"title\": \"Message Types Timeline [Filebeat NATS] ECS\", \"params\": {\"times\": [], \"type\": \"line\", \"seriesParams\": [{\"type\": \"line\", \"interpolate\": \"cardinal\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"show\": \"true\", \"mode\": \"normal\", \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"addLegend\": true, \"legendPosition\": \"right\", \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Count\"}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}}"
+            },
+            "id": "6987a800-41a8-11e9-a4da-b1df688edbcd-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T21:47:49.627Z",
+            "version": 3
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"service.type: nats\", \"language\": \"kuery\"}}"
+                },
+                "title": "Communication Directions [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"significant_terms\", \"params\": {\"size\": 2, \"field\": \"network.direction\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"line\", \"title\": \"Communication Directions [Filebeat NATS] ECS\", \"params\": {\"times\": [], \"type\": \"line\", \"seriesParams\": [{\"type\": \"line\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"mode\": \"normal\", \"show\": \"true\", \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"addLegend\": true, \"legendPosition\": \"right\", \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Count\"}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}}"
+            },
+            "id": "0b2061d0-41ad-11e9-a4da-b1df688edbcd-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T21:54:53.381Z",
+            "version": 3
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "title": "Topics Timeline [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"significant_terms\", \"params\": {\"size\": 5, \"field\": \"nats.log.msg.subject\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"line\", \"title\": \"Topics Timeline [Filebeat NATS] ECS\", \"params\": {\"times\": [], \"type\": \"line\", \"seriesParams\": [{\"type\": \"line\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"mode\": \"normal\", \"show\": \"true\", \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"addLegend\": true, \"legendPosition\": \"right\", \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Count\"}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}}"
+            },
+            "id": "4a6d9ec0-41a8-11e9-a4da-b1df688edbcd-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T21:49:49.112Z",
+            "version": 3
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "title": " Bytes Timeline [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"sum\", \"params\": {\"field\": \"nats.log.msg.bytes\", \"customLabel\": \"Sum of Message Bytes\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"line\", \"title\": \" Bytes Timeline [Filebeat NATS] ECS\", \"params\": {\"times\": [], \"type\": \"line\", \"seriesParams\": [{\"type\": \"line\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"mode\": \"normal\", \"show\": \"true\", \"data\": {\"label\": \"Sum of Message Bytes\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"addLegend\": true, \"legendPosition\": \"right\", \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Sum of Message Bytes\"}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}}"
+            },
+            "id": "c3d1ab80-41a8-11e9-a4da-b1df688edbcd-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T21:38:11.578Z",
+            "version": 3
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"service.type: nats\", \"language\": \"kuery\"}}"
+                },
+                "title": "Communication Directions Distribution [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"significant_terms\", \"params\": {\"size\": 2, \"field\": \"network.direction\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Communication Directions Distribution [Filebeat NATS] ECS\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": true}, \"type\": \"pie\", \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "7716c780-41ad-11e9-a4da-b1df688edbcd-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T21:39:03.899Z",
+            "version": 5
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"service.type: nats\", \"language\": \"kuery\"}}"
+                },
+                "title": "Log Level Distribution [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"significant_terms\", \"params\": {\"size\": 10, \"field\": \"log.level\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Log Level Distribution [Filebeat NATS] ECS\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": true}, \"type\": \"pie\", \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "3f6cca40-41ae-11e9-a4da-b1df688edbcd-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T21:44:31.263Z",
+            "version": 3
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "title": "Message Type Distribution [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"significant_terms\", \"params\": {\"size\": 15, \"field\": \"nats.log.msg.type\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Message Type Distribution [Filebeat NATS] ECS\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": true}, \"type\": \"pie\", \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "7ed62870-41ae-11e9-a4da-b1df688edbcd-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T21:48:10.554Z",
+            "version": 3
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"service.type: nats\", \"language\": \"kuery\"}}"
+                },
+                "title": "Log Level Timeline [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"significant_terms\", \"params\": {\"size\": 10, \"field\": \"log.level\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"area\", \"title\": \"Log Level Timeline [Filebeat NATS] ECS\", \"params\": {\"times\": [], \"type\": \"area\", \"seriesParams\": [{\"type\": \"area\", \"interpolate\": \"linear\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"show\": \"true\", \"mode\": \"stacked\", \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"addLegend\": true, \"legendPosition\": \"right\", \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Count\"}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}}"
+            },
+            "id": "04083600-41af-11e9-a4da-b1df688edbcd-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T21:48:44.582Z",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"index\": \"filebeat-*\", \"query\": {\"query\": \"service.type: nats\", \"language\": \"kuery\"}}"
+                },
+                "title": "Client IP Count Timeline [Filebeat NATS] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"ip_range\", \"params\": {\"field\": \"client.ip\", \"ipRangeType\": \"fromTo\", \"ranges\": {\"mask\": [{\"mask\": \"0.0.0.0/1\"}, {\"mask\": \"128.0.0.0/2\"}], \"fromTo\": [{\"to\": \"127.255.255.255\", \"from\": \"0.0.0.0\"}, {\"to\": \"191.255.255.255\", \"from\": \"128.0.0.0\"}]}}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"line\", \"title\": \"Client IP Count Timeline [Filebeat NATS] ECS\", \"params\": {\"times\": [], \"type\": \"line\", \"seriesParams\": [{\"type\": \"line\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"mode\": \"normal\", \"show\": \"true\", \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"addLegend\": true, \"legendPosition\": \"right\", \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Count\"}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}}"
+            },
+            "id": "c669ae20-41ed-11e9-ac5c-71ffa38a62e3-ecs",
+            "type": "visualization",
+            "updated_at": "2019-03-08T22:01:50.337Z",
+            "version": 1
+        },
+        {
+            "attributes": {
+                "description": "Overview of NATS server statistics",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "optionsJSON": "{\"darkTheme\": false, \"hidePanelTitles\": false, \"useMargins\": true}",
+                "panelsJSON": "[{\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 17, \"i\": \"1\", \"h\": 11}, \"version\": \"6.6.0\", \"panelIndex\": \"1\", \"id\": \"6987a800-41a8-11e9-a4da-b1df688edbcd-ecs\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 31, \"y\": 0, \"w\": 17, \"i\": \"2\", \"h\": 11}, \"version\": \"6.6.0\", \"panelIndex\": \"2\", \"id\": \"0b2061d0-41ad-11e9-a4da-b1df688edbcd-ecs\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 0, \"y\": 20, \"w\": 25, \"i\": \"3\", \"h\": 12}, \"version\": \"6.6.0\", \"panelIndex\": \"3\", \"id\": \"4a6d9ec0-41a8-11e9-a4da-b1df688edbcd-ecs\"}, {\"embeddableConfig\": {\"vis\": {\"legendOpen\": false}}, \"type\": \"visualization\", \"gridData\": {\"x\": 11, \"y\": 11, \"w\": 12, \"i\": \"4\", \"h\": 9}, \"version\": \"6.6.0\", \"panelIndex\": \"4\", \"id\": \"c3d1ab80-41a8-11e9-a4da-b1df688edbcd-ecs\"}, {\"embeddableConfig\": {\"vis\": {\"legendOpen\": false}}, \"type\": \"visualization\", \"gridData\": {\"x\": 0, \"y\": 11, \"w\": 11, \"i\": \"5\", \"h\": 9}, \"version\": \"6.6.0\", \"panelIndex\": \"5\", \"id\": \"7716c780-41ad-11e9-a4da-b1df688edbcd-ecs\"}, {\"embeddableConfig\": {\"vis\": {\"legendOpen\": false}}, \"type\": \"visualization\", \"gridData\": {\"x\": 37, \"y\": 11, \"w\": 11, \"i\": \"6\", \"h\": 9}, \"version\": \"6.6.0\", \"panelIndex\": \"6\", \"id\": \"3f6cca40-41ae-11e9-a4da-b1df688edbcd-ecs\"}, {\"embeddableConfig\": {\"vis\": {\"legendOpen\": false}}, \"type\": \"visualization\", \"gridData\": {\"x\": 17, \"y\": 0, \"w\": 14, \"i\": \"7\", \"h\": 11}, \"version\": \"6.6.0\", \"panelIndex\": \"7\", \"id\": \"7ed62870-41ae-11e9-a4da-b1df688edbcd-ecs\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 23, \"y\": 11, \"w\": 14, \"i\": \"8\", \"h\": 9}, \"version\": \"6.6.0\", \"panelIndex\": \"8\", \"id\": \"04083600-41af-11e9-a4da-b1df688edbcd-ecs\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 25, \"y\": 20, \"w\": 22, \"i\": \"9\", \"h\": 12}, \"version\": \"6.6.0\", \"panelIndex\": \"9\", \"id\": \"c669ae20-41ed-11e9-ac5c-71ffa38a62e3-ecs\"}]",
+                "timeRestore": false,
+                "title": "[Filebeat NATS] Overview ECS",
+                "version": 1
+            },
+            "id": "Filebeat-nats-overview-ecs",
+            "type": "dashboard",
+            "updated_at": "2019-03-08T22:02:50.580Z",
+            "version": 5
+        }
+    ],
+    "version": "6.6.0"
+}

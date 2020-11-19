@@ -1,0 +1,285 @@
+{
+    "objects": [
+        {
+            "attributes": {
+                "description": "Overview of audit events from Google Cloud.",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "optionsJSON": "{\"useMargins\": true, \"hidePanelTitles\": false}",
+                "panelsJSON": "[{\"embeddableConfig\": {\"isLayerTOCOpen\": false, \"openTOCDetails\": [], \"hiddenLayers\": [], \"mapCenter\": {\"lat\": 32.1625, \"lon\": -48.67493, \"zoom\": 1.97}}, \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 24, \"i\": \"a808a985-5cf3-463a-9aad-5159cb64cef1\", \"h\": 15}, \"panelRefName\": \"panel_0\", \"panelIndex\": \"a808a985-5cf3-463a-9aad-5159cb64cef1\", \"version\": \"8.0.0-SNAPSHOT\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 24, \"y\": 0, \"w\": 24, \"i\": \"9e7025b6-c3bf-424f-b541-d22d00e1fa64\", \"h\": 15}, \"panelRefName\": \"panel_1\", \"panelIndex\": \"9e7025b6-c3bf-424f-b541-d22d00e1fa64\", \"version\": \"8.0.0-SNAPSHOT\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 0, \"y\": 15, \"w\": 12, \"i\": \"5b6a8479-2c18-495e-88fa-9e3239277e3d\", \"h\": 14}, \"panelRefName\": \"panel_2\", \"panelIndex\": \"5b6a8479-2c18-495e-88fa-9e3239277e3d\", \"version\": \"8.0.0-SNAPSHOT\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 12, \"y\": 15, \"w\": 12, \"i\": \"46da4e61-e0bb-4595-a2c7-05210bfbea64\", \"h\": 14}, \"panelRefName\": \"panel_3\", \"panelIndex\": \"46da4e61-e0bb-4595-a2c7-05210bfbea64\", \"version\": \"8.0.0-SNAPSHOT\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 24, \"y\": 15, \"w\": 12, \"i\": \"4d698f07-2caf-45c0-bd48-51ea72ea79b0\", \"h\": 14}, \"panelRefName\": \"panel_4\", \"panelIndex\": \"4d698f07-2caf-45c0-bd48-51ea72ea79b0\", \"version\": \"8.0.0-SNAPSHOT\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 36, \"y\": 15, \"w\": 12, \"i\": \"c5e31da0-d4c8-4554-ab32-61da2495ab6c\", \"h\": 14}, \"panelRefName\": \"panel_5\", \"panelIndex\": \"c5e31da0-d4c8-4554-ab32-61da2495ab6c\", \"version\": \"8.0.0-SNAPSHOT\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 0, \"y\": 29, \"w\": 48, \"i\": \"95ebbda8-9b00-4b23-b116-72569ea031e3\", \"h\": 9}, \"panelRefName\": \"panel_6\", \"panelIndex\": \"95ebbda8-9b00-4b23-b116-72569ea031e3\", \"version\": \"8.0.0-SNAPSHOT\"}]",
+                "timeRestore": false,
+                "title": "[Filebeat GoogleCloud] Audit",
+                "version": 1
+            },
+            "id": "6576c480-73a2-11ea-a345-f985c61fe654",
+            "migrationVersion": {
+                "dashboard": "7.3.0"
+            },
+            "references": [
+                {
+                    "id": "a97de660-73a5-11ea-a345-f985c61fe654",
+                    "name": "panel_0",
+                    "type": "map"
+                },
+                {
+                    "id": "4627efa0-73a2-11ea-a345-f985c61fe654",
+                    "name": "panel_1",
+                    "type": "visualization"
+                },
+                {
+                    "id": "eb5bf570-73a2-11ea-a345-f985c61fe654",
+                    "name": "panel_2",
+                    "type": "visualization"
+                },
+                {
+                    "id": "33ee1320-73a5-11ea-a345-f985c61fe654",
+                    "name": "panel_3",
+                    "type": "visualization"
+                },
+                {
+                    "id": "a8e40240-73a3-11ea-a345-f985c61fe654",
+                    "name": "panel_4",
+                    "type": "visualization"
+                },
+                {
+                    "id": "6d90d320-73a4-11ea-a345-f985c61fe654",
+                    "name": "panel_5",
+                    "type": "visualization"
+                },
+                {
+                    "id": "d88364c0-73a1-11ea-a345-f985c61fe654",
+                    "name": "panel_6",
+                    "type": "search"
+                }
+            ],
+            "type": "dashboard",
+            "updated_at": "2020-03-31T23:18:30.933Z",
+            "version": "WzE1MTYsM10="
+        },
+        {
+            "attributes": {
+                "bounds": {
+                    "coordinates": [
+                        [
+                            [
+                                -180,
+                                74.14342
+                            ],
+                            [
+                                -180,
+                                -58.35006
+                            ],
+                            [
+                                180,
+                                -58.35006
+                            ],
+                            [
+                                180,
+                                74.14342
+                            ],
+                            [
+                                -180,
+                                74.14342
+                            ]
+                        ]
+                    ],
+                    "type": "Polygon"
+                },
+                "description": "",
+                "layerListJSON": "[{\"sourceDescriptor\":{\"type\":\"EMS_TMS\",\"isAutoSelect\":true},\"id\":\"866b5ce1-6ca0-47db-a6f2-54c5e0dcd2f0\",\"label\":null,\"minZoom\":0,\"maxZoom\":24,\"alpha\":1,\"visible\":true,\"style\":{},\"type\":\"VECTOR_TILE\"},{\"sourceDescriptor\":{\"id\":\"79ec6461-7561-45e4-a6a2-9d6fbd4cf986\",\"geoField\":\"source.geo.location\",\"filterByMapBounds\":true,\"scalingType\":\"LIMIT\",\"topHitsSize\":1,\"type\":\"ES_SEARCH\",\"tooltipProperties\":[],\"sortField\":\"\",\"sortOrder\":\"desc\",\"applyGlobalQuery\":true,\"indexPatternRefName\":\"layer_1_source_index_pattern\"},\"style\":{\"type\":\"VECTOR\",\"properties\":{\"icon\":{\"type\":\"STATIC\",\"options\":{\"value\":\"marker\"}},\"fillColor\":{\"type\":\"STATIC\",\"options\":{\"color\":\"#54B399\"}},\"lineColor\":{\"type\":\"STATIC\",\"options\":{\"color\":\"#41937c\"}},\"lineWidth\":{\"type\":\"STATIC\",\"options\":{\"size\":1}},\"iconSize\":{\"type\":\"STATIC\",\"options\":{\"size\":6}},\"iconOrientation\":{\"type\":\"STATIC\",\"options\":{\"orientation\":0}},\"labelText\":{\"type\":\"STATIC\",\"options\":{\"value\":\"\"}},\"labelColor\":{\"type\":\"STATIC\",\"options\":{\"color\":\"#000000\"}},\"labelSize\":{\"type\":\"STATIC\",\"options\":{\"size\":14}},\"labelBorderColor\":{\"type\":\"STATIC\",\"options\":{\"color\":\"#FFFFFF\"}},\"symbolizeAs\":{\"options\":{\"value\":\"circle\"}},\"labelBorderSize\":{\"options\":{\"size\":\"SMALL\"}}},\"isTimeAware\":true},\"id\":\"279da950-e9a7-4287-ab37-25906e448455\",\"label\":\"Source Locations\",\"minZoom\":0,\"maxZoom\":24,\"alpha\":0.75,\"visible\":true,\"type\":\"VECTOR\",\"joins\":[],\"query\":{\"query\":\"event.dataset:googlecloud.audit\",\"language\":\"kuery\"}}]",
+                "mapStateJSON": "{\"zoom\":1.97,\"center\":{\"lon\":0,\"lat\":19.94277},\"timeFilters\":{\"from\":\"now-7d\",\"to\":\"now\"},\"refreshConfig\":{\"isPaused\":false,\"interval\":0},\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filters\":[]}",
+                "title": "Audit Source Locations [Filebeat GoogleCloud]",
+                "uiStateJSON": "{\"isLayerTOCOpen\": true, \"openTOCDetails\": []}"
+            },
+            "id": "a97de660-73a5-11ea-a345-f985c61fe654",
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "layer_1_source_index_pattern",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "map",
+            "updated_at": "2020-03-31T23:16:33.861Z",
+            "version": "WzE1MDksM10="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Audit Events Outcome over time [Filebeat GoogleCloud]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"params\": {\"timeRange\": {\"to\": \"now\", \"from\": \"now-7d\"}, \"useNormalizedEsInterval\": true, \"extended_bounds\": {}, \"interval\": \"auto\", \"field\": \"@timestamp\", \"drop_partials\": false, \"min_doc_count\": 1, \"scaleMetricValues\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"otherBucketLabel\": \"Other\", \"missingBucket\": true, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"event.outcome\", \"missingBucketLabel\": \"[unknown]\", \"otherBucket\": false}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"histogram\", \"title\": \"Audit Event Outcome over time [Filebeat GoogleCloud]\", \"params\": {\"times\": [], \"type\": \"histogram\", \"addTooltip\": true, \"grid\": {\"categoryLines\": false}, \"thresholdLine\": {\"width\": 1, \"value\": 10, \"color\": \"#E7664C\", \"style\": \"full\", \"show\": false}, \"addLegend\": true, \"legendPosition\": \"right\", \"labels\": {\"show\": false}, \"categoryAxes\": [{\"labels\": {\"filter\": true, \"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"seriesParams\": [{\"type\": \"histogram\", \"lineWidth\": 2, \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"show\": true, \"mode\": \"stacked\", \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Count\"}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}}"
+            },
+            "id": "4627efa0-73a2-11ea-a345-f985c61fe654",
+            "migrationVersion": {
+                "visualization": "7.4.2"
+            },
+            "references": [
+                {
+                    "id": "d88364c0-73a1-11ea-a345-f985c61fe654",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2020-03-31T22:52:18.713Z",
+            "version": "WzE0MjQsM10="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Audit Event Action [Filebeat GoogleCloud]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 20, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"event.action\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Audit Event Action [Filebeat GoogleCloud]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "eb5bf570-73a2-11ea-a345-f985c61fe654",
+            "migrationVersion": {
+                "visualization": "7.4.2"
+            },
+            "references": [
+                {
+                    "id": "d88364c0-73a1-11ea-a345-f985c61fe654",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2020-03-31T22:56:55.878Z",
+            "version": "WzE0MzgsM10="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Audit Top User Email [Filebeat GoogleCloud]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 15, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"user.email\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"tagcloud\", \"title\": \"Audit Top User Email [Filebeat GoogleCloud]\", \"params\": {\"minFontSize\": 18, \"maxFontSize\": 72, \"scale\": \"linear\", \"showLabel\": true, \"orientation\": \"single\"}}"
+            },
+            "id": "33ee1320-73a5-11ea-a345-f985c61fe654",
+            "migrationVersion": {
+                "visualization": "7.4.2"
+            },
+            "references": [
+                {
+                    "id": "d88364c0-73a1-11ea-a345-f985c61fe654",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2020-03-31T23:13:16.626Z",
+            "version": "WzE0OTQsM10="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Audit User Agent [Filebeat GoogleCloud]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 20, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"user_agent.name\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Audit User Agent [Filebeat GoogleCloud]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "a8e40240-73a3-11ea-a345-f985c61fe654",
+            "migrationVersion": {
+                "visualization": "7.4.2"
+            },
+            "references": [
+                {
+                    "id": "d88364c0-73a1-11ea-a345-f985c61fe654",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2020-03-31T23:02:13.859Z",
+            "version": "WzE0NTksM10="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Audit Resource Name [Filebeat GoogleCloud]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 20, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"googlecloud.audit.resource_name\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Audit Resource Name [Filebeat GoogleCloud]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "6d90d320-73a4-11ea-a345-f985c61fe654",
+            "migrationVersion": {
+                "visualization": "7.4.2"
+            },
+            "references": [
+                {
+                    "id": "d88364c0-73a1-11ea-a345-f985c61fe654",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2020-03-31T23:07:43.826Z",
+            "version": "WzE0NzEsM10="
+        },
+        {
+            "attributes": {
+                "columns": [
+                    "user.email",
+                    "service.name",
+                    "googlecloud.audit.type",
+                    "event.action",
+                    "event.outcome",
+                    "source.ip",
+                    "source.geo.region_name"
+                ],
+                "description": "",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [{\"query\": {\"match_phrase\": {\"event.dataset\": \"googlecloud.audit\"}}, \"$state\": {\"store\": \"appState\"}, \"meta\": {\"type\": \"phrase\", \"key\": \"event.dataset\", \"alias\": null, \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\", \"params\": {\"query\": \"googlecloud.audit\"}, \"disabled\": false, \"negate\": false}}], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\", \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"highlightAll\": true, \"version\": true}"
+                },
+                "sort": [],
+                "title": "Audit [Filebeat GoogleCloud]",
+                "version": 1
+            },
+            "id": "d88364c0-73a1-11ea-a345-f985c61fe654",
+            "migrationVersion": {
+                "search": "7.4.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                },
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "search",
+            "updated_at": "2020-03-31T22:49:14.763Z",
+            "version": "WzE0MTUsM10="
+        }
+    ],
+    "version": "8.0.0-SNAPSHOT"
+}

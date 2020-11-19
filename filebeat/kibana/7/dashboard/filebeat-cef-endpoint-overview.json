@@ -1,0 +1,475 @@
+{
+    "objects": [
+        {
+            "attributes": {
+                "description": "Summary of endpoint event data.",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"*\", \"language\": \"lucene\"}, \"highlightAll\": true, \"version\": true}"
+                },
+                "optionsJSON": "{\"darkTheme\": false}",
+                "panelsJSON": "[{\"embeddableConfig\": {}, \"gridData\": {\"x\": 40, \"y\": 4, \"w\": 8, \"i\": \"1\", \"h\": 8}, \"panelRefName\": \"panel_0\", \"panelIndex\": \"1\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"vis\": {\"colors\": {\"/Attempt\": \"#0A50A1\", \"/Success\": \"#629E51\", \"/Failure\": \"#BF1B00\"}}}, \"gridData\": {\"x\": 24, \"y\": 32, \"w\": 24, \"i\": \"2\", \"h\": 12}, \"panelRefName\": \"panel_1\", \"panelIndex\": \"2\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"vis\": {\"colors\": {\"/Attempt\": \"#0A50A1\", \"/Success\": \"#629E51\", \"/Failure\": \"#BF1B00\"}}}, \"gridData\": {\"x\": 0, \"y\": 32, \"w\": 24, \"i\": \"3\", \"h\": 12}, \"panelRefName\": \"panel_2\", \"panelIndex\": \"3\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 0, \"y\": 12, \"w\": 48, \"i\": \"5\", \"h\": 8}, \"panelRefName\": \"panel_3\", \"panelIndex\": \"5\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 24, \"y\": 44, \"w\": 24, \"i\": \"6\", \"h\": 12}, \"panelRefName\": \"panel_4\", \"panelIndex\": \"6\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"vis\": {\"defaultColors\": {\"0 - 100\": \"rgb(0,104,55)\"}}}, \"gridData\": {\"x\": 0, \"y\": 4, \"w\": 40, \"i\": \"7\", \"h\": 8}, \"panelRefName\": \"panel_5\", \"panelIndex\": \"7\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"vis\": {\"colors\": {\"/Attempt\": \"#0A50A1\", \"/Success\": \"#629E51\", \"/Failure\": \"#BF1B00\"}}}, \"gridData\": {\"x\": 0, \"y\": 44, \"w\": 24, \"i\": \"8\", \"h\": 12}, \"panelRefName\": \"panel_6\", \"panelIndex\": \"8\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"sort\": [\"@timestamp\", \"desc\"], \"columns\": [\"cef.extensions.categoryDeviceGroup\", \"cef.extensions.categoryTechnique\", \"cef.extensions.categoryOutcome\", \"cef.extensions.categorySignificance\", \"cef.extensions.categoryObject\", \"cef.extensions.categoryBehavior\", \"cef.extensions.categoryDeviceType\"]}, \"gridData\": {\"x\": 0, \"y\": 76, \"w\": 48, \"i\": \"9\", \"h\": 20}, \"panelRefName\": \"panel_7\", \"panelIndex\": \"9\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 24, \"y\": 56, \"w\": 24, \"i\": \"10\", \"h\": 8}, \"panelRefName\": \"panel_8\", \"panelIndex\": \"10\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"vis\": {\"colors\": {\"Anti-Virus\": \"#EAB839\", \"Host-based IDS/IPS\": \"#E0752D\", \"Database\": \"#629E51\", \"Operating System\": \"#BF1B00\", \"Security Mangement\": \"#64B0C8\"}}}, \"gridData\": {\"x\": 0, \"y\": 20, \"w\": 24, \"i\": \"11\", \"h\": 12}, \"panelRefName\": \"panel_9\", \"panelIndex\": \"11\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"vis\": {\"params\": {\"sort\": {\"direction\": null, \"columnIndex\": null}}}}, \"gridData\": {\"x\": 0, \"y\": 56, \"w\": 24, \"i\": \"12\", \"h\": 20}, \"panelRefName\": \"panel_10\", \"panelIndex\": \"12\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"vis\": {\"colors\": {\"/Informational/Warning\": \"#EF843C\", \"Host-based IDS/IPS\": \"#E0752D\", \"/Success\": \"#629E51\", \"Recon\": \"#BF1B00\", \"Operating System\": \"#BF1B00\", \"Security Mangement\": \"#64B0C8\", \"/Attempt\": \"#0A50A1\", \"/Failure\": \"#BF1B00\", \"/Informational\": \"#7EB26D\", \"Anti-Virus\": \"#EAB839\", \"Database\": \"#629E51\", \"Log Consolidator\": \"#E0F9D7\"}}}, \"gridData\": {\"x\": 24, \"y\": 20, \"w\": 24, \"i\": \"14\", \"h\": 12}, \"panelRefName\": \"panel_11\", \"panelIndex\": \"14\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 48, \"i\": \"15\", \"h\": 4}, \"panelRefName\": \"panel_12\", \"panelIndex\": \"15\", \"version\": \"7.3.0\"}, {\"embeddableConfig\": {\"mapZoom\": 1, \"mapCenter\": [12.897489183755892, 0]}, \"gridData\": {\"x\": 24, \"y\": 64, \"w\": 24, \"i\": \"17\", \"h\": 12}, \"panelRefName\": \"panel_13\", \"panelIndex\": \"17\", \"version\": \"7.3.0\"}]",
+                "refreshInterval": {
+                    "display": "Off",
+                    "pause": false,
+                    "value": 0
+                },
+                "timeFrom": "now-24h",
+                "timeRestore": true,
+                "timeTo": "now",
+                "title": "[Filebeat CEF] Endpoint Overview Dashboard",
+                "version": 1
+            },
+            "id": "c10ce1cf-f6b8-4de4-8715-2cb5f6770b3b",
+            "migrationVersion": {
+                "dashboard": "7.3.0"
+            },
+            "references": [
+                {
+                    "id": "9457ee67-895f-4b78-a543-268f9687a745",
+                    "name": "panel_0",
+                    "type": "visualization"
+                },
+                {
+                    "id": "fe7b63d1-dbc7-4376-af7f-ace97a9f2e60",
+                    "name": "panel_1",
+                    "type": "visualization"
+                },
+                {
+                    "id": "89998099-9a39-44cf-beba-5b97f0524cf9",
+                    "name": "panel_2",
+                    "type": "visualization"
+                },
+                {
+                    "id": "718b074e-3dd1-4d03-ba11-7f869cdcd703",
+                    "name": "panel_3",
+                    "type": "visualization"
+                },
+                {
+                    "id": "c5120e27-1f8c-41e3-83ee-78ec4d470c2f",
+                    "name": "panel_4",
+                    "type": "visualization"
+                },
+                {
+                    "id": "7454c034-c5f3-48fe-8fce-ef4385c80350",
+                    "name": "panel_5",
+                    "type": "visualization"
+                },
+                {
+                    "id": "118af639-1f37-4541-a960-5a3ff0613e0e",
+                    "name": "panel_6",
+                    "type": "visualization"
+                },
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "panel_7",
+                    "type": "search"
+                },
+                {
+                    "id": "74d2c072-6dfd-4249-8e63-dc7b0cf3c960",
+                    "name": "panel_8",
+                    "type": "visualization"
+                },
+                {
+                    "id": "f57734dd-0f32-42b4-94dd-5d597f6735e1",
+                    "name": "panel_9",
+                    "type": "visualization"
+                },
+                {
+                    "id": "295986d4-d2ea-4541-8e82-7dc95c0cd830",
+                    "name": "panel_10",
+                    "type": "visualization"
+                },
+                {
+                    "id": "5bf6e4dc-4273-4e1e-a803-04347eebeb53",
+                    "name": "panel_11",
+                    "type": "visualization"
+                },
+                {
+                    "id": "677891a1-90c4-4273-b126-f0e54689bd76",
+                    "name": "panel_12",
+                    "type": "visualization"
+                },
+                {
+                    "id": "aaa80503-6d96-4a33-806f-b8a10aefe696",
+                    "name": "panel_13",
+                    "type": "visualization"
+                }
+            ],
+            "type": "dashboard",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyNzcsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query_string\": {\"query\": \"*\"}}}"
+                },
+                "title": "Endpoint Average EPS [Filebeat CEF]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [], \"listeners\": {}, \"title\": \"Endpoint Average EPS [Filebeat CEF]\", \"params\": {\"type\": \"gauge\", \"gauge_style\": \"half\", \"interval\": \"auto\", \"gauge_width\": 10, \"index_pattern\": \"filebeat-*\", \"bar_color_rules\": [{\"id\": \"85a1c642-9781-430d-b84b-b28cb2a42fb4\"}], \"filter\": {\"query\": \"cef.extensions.categoryDeviceGroup:\\\"/Operating System\\\" OR cef.extensions.categoryDeviceGroup:\\\"/IDS/Host\\\" OR cef.extensions.categoryDeviceGroup:\\\"/Application\\\"\", \"language\": \"lucene\"}, \"gauge_inner_width\": 10, \"time_field\": \"@timestamp\", \"axis_position\": \"left\", \"gauge_color_rules\": [{\"id\": \"03a2fd72-fc9c-4582-9133-20af36217180\"}], \"series\": [{\"value_template\": \"{{value}} / s\", \"seperate_axis\": 0, \"stacked\": \"none\", \"id\": \"b4373ffd-9660-4206-afd6-d4867ac7dbdf\", \"axis_position\": \"right\", \"point_size\": 1, \"split_mode\": \"everything\", \"line_width\": 1, \"formatter\": \"number\", \"fill\": 0.5, \"chart_type\": \"line\", \"label\": \"Event Throughput\", \"metrics\": [{\"type\": \"count\", \"id\": \"b1a48389-d799-4eba-8b98-7ee8ef0bb440\"}, {\"field\": \"b1a48389-d799-4eba-8b98-7ee8ef0bb440\", \"type\": \"cumulative_sum\", \"id\": \"7c5c44cc-17bd-4206-a100-b8996cd3d11a\"}, {\"field\": \"7c5c44cc-17bd-4206-a100-b8996cd3d11a\", \"unit\": \"1s\", \"type\": \"derivative\", \"id\": \"215c5225-5368-40e6-8fcd-2b0026babba0\"}, {\"period\": 1, \"type\": \"moving_average\", \"window\": \"10\", \"gamma\": 0.3, \"multiplicative\": false, \"beta\": 0.1, \"model_type\": \"simple\", \"field\": \"215c5225-5368-40e6-8fcd-2b0026babba0\", \"alpha\": 0.3, \"id\": \"f4dfe09a-e397-4287-ab99-3206516cded3\"}], \"color\": \"rgba(0,156,224,1)\"}], \"show_legend\": 1, \"axis_formatter\": \"number\", \"id\": \"b7a85957-123e-4e25-9e8e-ff7992c9b2b9\"}, \"type\": \"metrics\"}"
+            },
+            "id": "9457ee67-895f-4b78-a543-268f9687a745",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyNzgsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Destination Ports by Outcomes [Filebeat CEF]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 20, \"field\": \"destination.port\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"cef.extensions.categoryOutcome\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"listeners\": {}, \"title\": \"Destination Ports by Outcomes [Filebeat CEF]\", \"params\": {\"times\": [], \"interpolate\": \"linear\", \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"scale\": \"linear\", \"addLegend\": true, \"drawLinesBetweenPoints\": true, \"radiusRatio\": 9, \"setYExtents\": false, \"legendPosition\": \"right\", \"showCircles\": true, \"defaultYExtents\": false, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {\"text\": \"destination.port: Descending\"}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"seriesParams\": [{\"type\": \"histogram\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"mode\": \"stacked\", \"show\": \"true\", \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"setYExtents\": false, \"defaultYExtents\": true, \"type\": \"square root\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}, \"type\": \"histogram\"}"
+            },
+            "id": "fe7b63d1-dbc7-4376-af7f-ace97a9f2e60",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyNzksMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Outcomes Breakdown [Filebeat CEF]",
+                "uiStateJSON": "{\"vis\": {\"colors\": {\"/Attempt\": \"#3F2B5B\", \"/Failure\": \"#BF1B00\"}, \"legendOpen\": true}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"params\": {\"min_doc_count\": 1, \"field\": \"@timestamp\", \"customLabel\": \"Time\", \"extended_bounds\": {}, \"interval\": \"auto\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"cef.extensions.categoryOutcome\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"listeners\": {}, \"title\": \"Outcomes Breakdown [Filebeat CEF]\", \"params\": {\"times\": [], \"interpolate\": \"linear\", \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"scale\": \"linear\", \"addLegend\": true, \"drawLinesBetweenPoints\": true, \"radiusRatio\": 9, \"setYExtents\": false, \"legendPosition\": \"right\", \"showCircles\": true, \"defaultYExtents\": false, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {\"text\": \"Time\"}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"seriesParams\": [{\"type\": \"area\", \"interpolate\": \"linear\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"show\": \"true\", \"mode\": \"stacked\", \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}]}, \"type\": \"area\"}"
+            },
+            "id": "89998099-9a39-44cf-beba-5b97f0524cf9",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODAsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query_string\": {\"query\": \"*\"}}}"
+                },
+                "title": "Events by Device [Filebeat CEF]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [], \"listeners\": {}, \"title\": \"Events by Device [Filebeat CEF]\", \"params\": {\"filter\": {\"query\": \"cef.extensions.categoryDeviceGroup:\\\"/Operating System\\\" OR cef.extensions.categoryDeviceGroup:\\\"/IDS/Host\\\" OR cef.extensions.categoryDeviceGroup:\\\"/Application\\\"\", \"language\": \"lucene\"}, \"type\": \"timeseries\", \"time_field\": \"@timestamp\", \"interval\": \"auto\", \"axis_position\": \"left\", \"index_pattern\": \"filebeat-*\", \"series\": [{\"split_filters\": [{\"filter\": \"cef.extensions.categoryDeviceGroup:\\\"/Operating System\\\" \", \"label\": \"Operating System\", \"color\": \"rgba(244,78,59,1)\", \"id\": \"d9a580c3-eb83-4d20-a391-0934d7df8837\"}, {\"filter\": \" cef.extensions.categoryDeviceGroup:\\\"/IDS/Host\\\"\", \"label\": \"Host IDS\", \"color\": \"rgba(254,146,0,1)\", \"id\": \"9ce8be14-6191-4c9a-a679-e3992fdab8d2\"}, {\"filter\": \"cef.extensions.categoryDeviceGroup:\\\"/Application\\\"\", \"label\": \"Application\", \"color\": \"rgba(252,220,0,1)\", \"id\": \"262ecd54-a042-4bfb-b489-d7db8431c36e\"}], \"seperate_axis\": 1, \"stacked\": \"none\", \"id\": \"6a10f77d-4e26-4b27-9c19-f1b0029b075b\", \"axis_position\": \"right\", \"point_size\": 1, \"split_mode\": \"filters\", \"line_width\": \"3\", \"formatter\": \"number\", \"fill\": \"0\", \"chart_type\": \"line\", \"label\": \"Events\", \"metrics\": [{\"type\": \"count\", \"id\": \"845b9164-65f4-4599-b9cc-8d91b6ba8d83\"}, {\"period\": 1, \"type\": \"moving_average\", \"window\": \"10\", \"gamma\": 0.3, \"multiplicative\": false, \"beta\": 0.1, \"model_type\": \"simple\", \"field\": \"845b9164-65f4-4599-b9cc-8d91b6ba8d83\", \"alpha\": 0.3, \"id\": \"59675e84-1a8e-41df-9f63-875109bd795a\"}], \"color\": \"rgba(254,37,37,1)\"}, {\"seperate_axis\": 1, \"stacked\": \"none\", \"terms_field\": \"observer.hostname\", \"id\": \"92e98952-8e25-472f-abb5-05a7d9b830ea\", \"axis_position\": \"left\", \"point_size\": 1, \"split_mode\": \"terms\", \"line_width\": 1, \"formatter\": \"number\", \"fill\": 0.5, \"chart_type\": \"bar\", \"label\": \"Moving Average by Device HostNames\", \"metrics\": [{\"type\": \"count\", \"id\": \"3df841a9-5997-4a1a-ad8f-69620d23e65b\"}, {\"period\": 1, \"type\": \"moving_average\", \"window\": \"10\", \"gamma\": 0.3, \"multiplicative\": false, \"beta\": 0.1, \"model_type\": \"simple\", \"field\": \"3df841a9-5997-4a1a-ad8f-69620d23e65b\", \"alpha\": 0.3, \"id\": \"9765367a-0fc2-45ba-88a8-e87991210edd\"}], \"color\": \"rgba(0,156,224,1)\"}], \"show_legend\": 1, \"axis_formatter\": \"number\", \"id\": \"fd1ffeb6-678e-4163-9421-6a164fd59048\"}, \"type\": \"metrics\"}"
+            },
+            "id": "718b074e-3dd1-4d03-ba11-7f869cdcd703",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODEsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Top 10 Destination Port [Filebeat CEF]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 20, \"field\": \"destination.port\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"listeners\": {}, \"title\": \"Top 10 Destination Port [Filebeat CEF]\", \"params\": {\"minFontSize\": 18, \"maxFontSize\": 72, \"scale\": \"linear\", \"orientation\": \"single\"}, \"type\": \"tagcloud\"}"
+            },
+            "id": "c5120e27-1f8c-41e3-83ee-78ec4d470c2f",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODIsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Endpoint Metrics Overview [Filebeat CEF]",
+                "uiStateJSON": "{\"vis\": {\"defaultColors\": {\"0 - 100\": \"rgb(0,104,55)\"}}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {\"customLabel\": \"Event Count\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"cardinality\", \"params\": {\"field\": \"observer.hostname\", \"customLabel\": \"Devices\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"cardinality\", \"params\": {\"field\": \"source.ip\", \"customLabel\": \"Source\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"3\"}, {\"type\": \"cardinality\", \"params\": {\"field\": \"destination.ip\", \"customLabel\": \"Destination\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"4\"}, {\"type\": \"cardinality\", \"params\": {\"field\": \"destination.port\", \"customLabel\": \"Port\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"5\"}], \"listeners\": {}, \"title\": \"Endpoint Metrics Overview [Filebeat CEF]\", \"params\": {\"type\": \"gauge\", \"handleNoResults\": true, \"fontSize\": \"30\", \"gauge\": {\"type\": \"simple\", \"gaugeStyle\": \"Full\", \"colorSchema\": \"Green to Red\", \"orientation\": \"vertical\", \"backStyle\": \"Full\", \"invertColors\": false, \"scale\": {\"labels\": false, \"width\": 2, \"color\": \"#333\", \"show\": false}, \"style\": {\"labelColor\": false, \"bgColor\": false, \"fontSize\": \"12\", \"subText\": \"\", \"bgFill\": \"#000\"}, \"labels\": {\"color\": \"black\", \"show\": true}, \"gaugeColorMode\": \"None\", \"verticalSplit\": false, \"useRange\": false, \"gaugeType\": \"Metric\", \"colorsRange\": [{\"to\": 100, \"from\": 0}], \"percentageMode\": false, \"autoExtend\": false}, \"addLegend\": false, \"addTooltip\": true}, \"type\": \"metric\"}"
+            },
+            "id": "7454c034-c5f3-48fe-8fce-ef4385c80350",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODMsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Outcomes by Device Type [Filebeat CEF]",
+                "uiStateJSON": "{\"vis\": {\"colors\": {\"/Failure\": \"#BF1B00\"}, \"legendOpen\": true}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"cef.extensions.categoryDeviceType\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"cef.extensions.categoryOutcome\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"listeners\": {}, \"title\": \"Outcomes by Device Type [Filebeat CEF]\", \"params\": {\"times\": [], \"interpolate\": \"linear\", \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"scale\": \"linear\", \"addLegend\": true, \"drawLinesBetweenPoints\": true, \"radiusRatio\": 9, \"setYExtents\": false, \"legendPosition\": \"right\", \"showCircles\": true, \"defaultYExtents\": false, \"categoryAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 200, \"show\": true, \"rotate\": 0}, \"type\": \"category\", \"title\": {\"text\": \"cef.extensions.categoryDeviceType: Descending\"}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"left\"}], \"addTimeMarker\": false, \"seriesParams\": [{\"type\": \"histogram\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"mode\": \"normal\", \"show\": true, \"data\": {\"label\": \"Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}], \"valueAxes\": [{\"labels\": {\"filter\": true, \"truncate\": 100, \"show\": true, \"rotate\": 75}, \"type\": \"value\", \"title\": {}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"bottom\"}]}, \"type\": \"histogram\"}"
+            },
+            "id": "118af639-1f37-4541-a960-5a3ff0613e0e",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODQsMV0="
+        },
+        {
+            "attributes": {
+                "columns": [
+                    "cef.extensions.categoryDeviceGroup",
+                    "cef.extensions.categoryTechnique",
+                    "cef.extensions.categoryOutcome",
+                    "cef.extensions.categorySignificance",
+                    "cef.extensions.categoryObject",
+                    "cef.extensions.categoryBehavior",
+                    "cef.extensions.categoryDeviceType"
+                ],
+                "description": "",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\", \"query\": {\"query_string\": {\"query\": \"cef.extensions.categoryDeviceGroup:\\\"/Operating System\\\" OR cef.extensions.categoryDeviceGroup:\\\"/IDS/Host\\\" OR cef.extensions.categoryDeviceGroup:\\\"/Application\\\"\", \"analyze_wildcard\": true}}, \"highlightAll\": true, \"version\": true}"
+                },
+                "sort": [
+                    [
+                        "@timestamp",
+                        "desc"
+                    ]
+                ],
+                "title": "Endpoint Event Explorer [Filebeat CEF]",
+                "version": 1
+            },
+            "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+            "migrationVersion": {
+                "search": "7.4.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "search",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODUsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Top 5 Source Countries [Filebeat CEF]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 20, \"field\": \"source.geo.country_iso_code\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"listeners\": {}, \"title\": \"Top 5 Source Countries [Filebeat CEF]\", \"params\": {\"minFontSize\": 18, \"maxFontSize\": 72, \"scale\": \"linear\", \"orientation\": \"single\"}, \"type\": \"tagcloud\"}"
+            },
+            "id": "74d2c072-6dfd-4249-8e63-dc7b0cf3c960",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODYsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Device Types by Vendor [Filebeat CEF]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"orderBy\": \"1\", \"field\": \"cef.extensions.categoryDeviceType\", \"size\": 5, \"exclude\": \"Network-based IDS/IPS\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"orderBy\": \"1\", \"field\": \"cef.device.vendor\", \"size\": 5, \"exclude\": \"\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"3\"}], \"listeners\": {}, \"title\": \"Device Types by Vendor [Filebeat CEF]\", \"params\": {\"isDonut\": false, \"addLegend\": true, \"legendPosition\": \"right\", \"addTooltip\": true}, \"type\": \"pie\"}"
+            },
+            "id": "f57734dd-0f32-42b4-94dd-5d597f6735e1",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODcsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Top 10 Source Countries by Event [Filebeat CEF]",
+                "uiStateJSON": "{\"vis\": {\"params\": {\"sort\": {\"direction\": null, \"columnIndex\": null}}}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {\"customLabel\": \"Total Events\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 35, \"field\": \"source.geo.country_iso_code\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"bucket\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"cardinality\", \"params\": {\"field\": \"source.ip\", \"customLabel\": \"Source Addresses\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"3\"}, {\"type\": \"cardinality\", \"params\": {\"field\": \"destination.ip\", \"customLabel\": \"Destination Addresses\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"4\"}, {\"type\": \"cardinality\", \"params\": {\"field\": \"destination.port\", \"customLabel\": \"Destination Ports\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"5\"}], \"listeners\": {}, \"title\": \"Top 10 Source Countries by Event [Filebeat CEF]\", \"params\": {\"totalFunc\": \"sum\", \"perPage\": 10, \"showMeticsAtAllLevels\": false, \"sort\": {\"direction\": null, \"columnIndex\": null}, \"showPartialRows\": false, \"showTotal\": false}, \"type\": \"table\"}"
+            },
+            "id": "295986d4-d2ea-4541-8e82-7dc95c0cd830",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODgsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Outcomes by User Names [Filebeat CEF]",
+                "uiStateJSON": "{\"vis\": {\"colors\": {\"/Informational/Warning\": \"#EF843C\", \"Host-based IDS/IPS\": \"#629E51\", \"/Success\": \"#64B0C8\", \"Operating System\": \"#3F6833\", \"/Informational\": \"#7EB26D\", \"Anti-Virus\": \"#B7DBAB\", \"Recon\": \"#BF1B00\", \"Security Mangement\": \"#CFFAFF\", \"Log Consolidator\": \"#E0F9D7\"}, \"legendOpen\": true}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"orderBy\": \"1\", \"field\": \"cef.extensions.categoryDeviceType\", \"size\": 5, \"exclude\": \"Network-based IDS/IPS\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"cef.extensions.categoryOutcome\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"3\"}, {\"type\": \"terms\", \"params\": {\"size\": 10, \"field\": \"destination.user.name\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"6\"}], \"listeners\": {}, \"title\": \"Outcomes by User Names [Filebeat CEF]\", \"params\": {\"isDonut\": false, \"addLegend\": true, \"legendPosition\": \"right\", \"addTooltip\": true}, \"type\": \"pie\"}"
+            },
+            "id": "5bf6e4dc-4273-4e1e-a803-04347eebeb53",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyODksMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query_string\": {\"query\": \"*\"}}}"
+                },
+                "title": " Dashboard Navigation [Filebeat CEF]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [], \"listeners\": {}, \"title\": \" Dashboard Navigation [Filebeat CEF]\", \"params\": {\"markdown\": \"[Network Overview](#/dashboard/dd0bc9af-2e89-4150-9b42-62517ea56b71) | [Network Suspicious Activity](#/dashboard/db1e1aca-279e-4ecc-b84e-fe58644f7619) | [Endpoint Overview](#dashboard/c10ce1cf-f6b8-4de4-8715-2cb5f6770b3b) | [Endpoint OS Activity](#/dashboard/9e352900-89c3-4c1b-863e-249e24d0dac9) | [Microsoft DNS Overview](#/dashboard/56428e01-0c47-4770-8ba4-9345a029ea41)\"}, \"type\": \"markdown\"}"
+            },
+            "id": "677891a1-90c4-4273-b126-f0e54689bd76",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:06.345Z",
+            "version": "WzEzMzYsMV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchRefName": "search_0",
+                "title": "Top Destination Locations by Event [Filebeat CEF]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"geohash_grid\", \"params\": {\"autoPrecision\": true, \"field\": \"destination.geo.location\", \"precision\": 2, \"useGeocentroid\": true}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"listeners\": {}, \"title\": \"Top Destination Locations by Event [Filebeat CEF]\", \"params\": {\"heatNormalizeData\": true, \"heatMinOpacity\": 0.1, \"addTooltip\": true, \"mapZoom\": 2, \"heatBlur\": 15, \"wms\": {\"url\": \"https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WMSServer\", \"options\": {\"layers\": \"0\", \"format\": \"image/png\", \"transparent\": true, \"styles\": \"\", \"version\": \"1.3.0\", \"attribution\": \"Maps provided by USGS\"}, \"enabled\": false}, \"legendPosition\": \"bottomright\", \"mapCenter\": [0, 0], \"heatMaxZoom\": 0, \"isDesaturated\": true, \"mapType\": \"Shaded Circle Markers\", \"heatRadius\": 25}, \"type\": \"tile_map\"}"
+            },
+            "id": "aaa80503-6d96-4a33-806f-b8a10aefe696",
+            "migrationVersion": {
+                "visualization": "7.3.1"
+            },
+            "references": [
+                {
+                    "id": "5cede2d3-20fe-4140-add4-4c4f841b71a2",
+                    "name": "search_0",
+                    "type": "search"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-10-25T16:30:03.318Z",
+            "version": "WzEyOTEsMV0="
+        }
+    ],
+    "version": "7.4.1"
+}

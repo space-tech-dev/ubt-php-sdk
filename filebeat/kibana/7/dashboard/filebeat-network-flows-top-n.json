@@ -1,0 +1,150 @@
+{
+    "objects": [
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchId": "c1e2ccd0-1ae5-11e9-9eb0-d1ab52900288",
+                "title": "Source Port and Transport [Filebeat Netflow]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"network.transport\", \"customLabel\": \"Transport\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 15, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"source.port\", \"customLabel\": \"Source Port\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"pie\", \"title\": \"Source Port and Transport [Filebeat Netflow]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "3bc31900-1ae7-11e9-9eb0-d1ab52900288",
+            "type": "visualization",
+            "updated_at": "2019-01-18T16:16:16.527Z",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [{\"query\": {\"bool\": {\"minimum_should_match\": 1, \"should\": [{\"match_phrase\": {\"network.direction\": \"inbound\"}}, {\"match_phrase\": {\"network.direction\": \"outbound\"}}]}}, \"$state\": {\"store\": \"appState\"}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"inbound, outbound\", \"key\": \"network.direction\", \"alias\": null, \"type\": \"phrases\", \"controlledBy\": \"1547791659064\", \"params\": [\"inbound\", \"outbound\"], \"disabled\": false, \"negate\": false}}, {\"query\": {\"match\": {\"flow.locality\": {\"query\": \"public\", \"type\": \"phrase\"}}}, \"$state\": {\"store\": \"appState\"}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"public\", \"key\": \"flow.locality\", \"alias\": null, \"type\": \"phrase\", \"controlledBy\": \"1547791714688\", \"params\": {\"query\": \"public\", \"type\": \"phrase\"}, \"disabled\": false, \"negate\": false}}], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "title": "Flow Selectors [Filebeat Netflow]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [], \"type\": \"input_control_vis\", \"title\": \"Flow Selectors [Filebeat Netflow]\", \"params\": {\"updateFiltersOnChange\": false, \"controls\": [{\"indexPattern\": \"filebeat-*\", \"type\": \"list\", \"parent\": \"\", \"options\": {\"order\": \"desc\", \"size\": 5, \"dynamicOptions\": true, \"type\": \"terms\", \"multiselect\": true}, \"fieldName\": \"network.direction\", \"label\": \"Network Direction\", \"id\": \"1547791659064\"}, {\"indexPattern\": \"filebeat-*\", \"type\": \"list\", \"parent\": \"\", \"options\": {\"order\": \"desc\", \"size\": 5, \"dynamicOptions\": true, \"type\": \"terms\", \"multiselect\": true}, \"fieldName\": \"flow.locality\", \"label\": \"Locality\", \"id\": \"1547791714688\"}], \"useTimeFilter\": false, \"pinFilters\": false}}"
+            },
+            "id": "b957b010-1ae7-11e9-9eb0-d1ab52900288",
+            "type": "visualization",
+            "updated_at": "2019-01-18T16:16:16.527Z",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchId": "c1e2ccd0-1ae5-11e9-9eb0-d1ab52900288",
+                "title": "Destination Port and Transport [Filebeat Netflow]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"network.transport\", \"customLabel\": \"Transport\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 15, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"destination.port\", \"customLabel\": \"Destination Port\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"pie\", \"title\": \"Destination Port and Transport [Filebeat Netflow]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "44042280-1ae7-11e9-9eb0-d1ab52900288",
+            "type": "visualization",
+            "updated_at": "2019-01-18T16:16:16.527Z",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchId": "c1e2ccd0-1ae5-11e9-9eb0-d1ab52900288",
+                "title": "Top Sources Table [Filebeat Netflow]",
+                "uiStateJSON": "{\"vis\": {\"params\": {\"sort\": {\"direction\": null, \"columnIndex\": null}}}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"sum\", \"params\": {\"field\": \"network.bytes\", \"customLabel\": \"Bytes\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"sum\", \"params\": {\"field\": \"network.packets\", \"customLabel\": \"Packets\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"sum\", \"params\": {\"field\": \"event.duration\", \"customLabel\": \"Duration\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"3\"}, {\"type\": \"terms\", \"params\": {\"size\": 30, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"source.ip\", \"customLabel\": \"Source IP\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"bucket\", \"enabled\": true, \"id\": \"4\"}, {\"type\": \"terms\", \"params\": {\"size\": 1, \"otherBucketLabel\": \"Other\", \"missingBucket\": true, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"source.domain\", \"customLabel\": \"Domain\", \"missingBucketLabel\": \"\", \"otherBucket\": false}, \"schema\": \"bucket\", \"enabled\": true, \"id\": \"5\"}], \"type\": \"table\", \"title\": \"Top Sources Table [Filebeat Netflow]\", \"params\": {\"showMetricsAtAllLevels\": false, \"perPage\": 10, \"sort\": {\"direction\": null, \"columnIndex\": null}, \"totalFunc\": \"sum\", \"showPartialRows\": false, \"showTotal\": false}}"
+            },
+            "id": "846bac40-1ae6-11e9-9eb0-d1ab52900288",
+            "type": "visualization",
+            "updated_at": "2019-01-18T16:39:24.499Z",
+            "version": 3
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchId": "c1e2ccd0-1ae5-11e9-9eb0-d1ab52900288",
+                "title": "Top Destinations Table [Filebeat Netflow]",
+                "uiStateJSON": "{\"vis\": {\"params\": {\"sort\": {\"direction\": null, \"columnIndex\": null}}}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"sum\", \"params\": {\"field\": \"network.bytes\", \"customLabel\": \"Bytes\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"sum\", \"params\": {\"field\": \"network.packets\", \"customLabel\": \"Packets\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"sum\", \"params\": {\"field\": \"event.duration\", \"customLabel\": \"Duration\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"3\"}, {\"type\": \"terms\", \"params\": {\"size\": 30, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"destination.ip\", \"customLabel\": \"Destination IP\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"bucket\", \"enabled\": true, \"id\": \"4\"}, {\"type\": \"terms\", \"params\": {\"size\": 1, \"otherBucketLabel\": \"Other\", \"missingBucket\": true, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"destination.domain\", \"customLabel\": \"Domain\", \"missingBucketLabel\": \"\", \"otherBucket\": false}, \"schema\": \"bucket\", \"enabled\": true, \"id\": \"5\"}], \"type\": \"table\", \"title\": \"Top Destinations Table [Filebeat Netflow]\", \"params\": {\"showMetricsAtAllLevels\": false, \"perPage\": 10, \"sort\": {\"direction\": null, \"columnIndex\": null}, \"totalFunc\": \"sum\", \"showPartialRows\": false, \"showTotal\": false}}"
+            },
+            "id": "8d0c61f0-1ae6-11e9-9eb0-d1ab52900288",
+            "type": "visualization",
+            "updated_at": "2019-01-18T16:39:44.417Z",
+            "version": 3
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "savedSearchId": "c1e2ccd0-1ae5-11e9-9eb0-d1ab52900288",
+                "title": "Flows Over Time [Filebeat Netflow]",
+                "uiStateJSON": "{\"vis\": {\"colors\": {\"Count\": \"#052B51\", \"Event Count\": \"#3F2B5B\", \"Bytes\": \"#82B5D8\"}}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {\"customLabel\": \"Event Count\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"params\": {\"min_doc_count\": 1, \"extended_bounds\": {}, \"time_zone\": \"America/New_York\", \"interval\": \"auto\", \"customInterval\": \"2h\", \"drop_partials\": false, \"field\": \"@timestamp\", \"useNormalizedEsInterval\": true}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"sum\", \"params\": {\"field\": \"network.bytes\", \"customLabel\": \"Bytes\"}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"3\"}], \"type\": \"area\", \"title\": \"Flows Over Time [Filebeat Netflow]\", \"params\": {\"times\": [], \"type\": \"area\", \"seriesParams\": [{\"type\": \"line\", \"interpolate\": \"cardinal\", \"valueAxis\": \"ValueAxis-2\", \"showCircles\": true, \"show\": \"true\", \"mode\": \"stacked\", \"data\": {\"label\": \"Event Count\", \"id\": \"1\"}, \"drawLinesBetweenPoints\": true}, {\"type\": \"area\", \"interpolate\": \"cardinal\", \"valueAxis\": \"ValueAxis-1\", \"showCircles\": true, \"show\": true, \"mode\": \"stacked\", \"data\": {\"label\": \"Bytes\", \"id\": \"3\"}, \"drawLinesBetweenPoints\": true}], \"addTooltip\": true, \"grid\": {\"categoryLines\": false, \"style\": {\"color\": \"#eee\"}}, \"categoryAxes\": [{\"labels\": {\"truncate\": 100, \"show\": true}, \"type\": \"category\", \"title\": {}, \"show\": true, \"id\": \"CategoryAxis-1\", \"scale\": {\"type\": \"linear\"}, \"style\": {}, \"position\": \"bottom\"}], \"addTimeMarker\": false, \"addLegend\": true, \"legendPosition\": \"top\", \"valueAxes\": [{\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Bytes\"}, \"show\": true, \"id\": \"ValueAxis-1\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"LeftAxis-1\", \"style\": {}, \"position\": \"left\"}, {\"labels\": {\"filter\": false, \"truncate\": 100, \"show\": true, \"rotate\": 0}, \"type\": \"value\", \"title\": {\"text\": \"Event Count\"}, \"show\": true, \"id\": \"ValueAxis-2\", \"scale\": {\"mode\": \"normal\", \"type\": \"linear\"}, \"name\": \"RightAxis-1\", \"style\": {}, \"position\": \"right\"}]}}"
+            },
+            "id": "e7c6efa0-1ae8-11e9-9eb0-d1ab52900288",
+            "type": "visualization",
+            "updated_at": "2019-01-18T16:16:16.527Z",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "columns": [
+                    "source.ip",
+                    "destination.ip",
+                    "network.direction",
+                    "network.transport",
+                    "network.bytes"
+                ],
+                "description": "",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [{\"query\": {\"match\": {\"event.action\": {\"query\": \"netflow_flow\", \"type\": \"phrase\"}}}, \"$state\": {\"store\": \"appState\"}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"netflow_flow\", \"key\": \"event.action\", \"alias\": null, \"type\": \"phrase\", \"params\": {\"query\": \"netflow_flow\", \"type\": \"phrase\"}, \"disabled\": false, \"negate\": false}}], \"index\": \"filebeat-*\", \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"highlightAll\": true, \"version\": true}"
+                },
+                "sort": [
+                    "@timestamp",
+                    "desc"
+                ],
+                "title": "Network Flow Search [Filebeat]",
+                "version": 1
+            },
+            "id": "c1e2ccd0-1ae5-11e9-9eb0-d1ab52900288",
+            "type": "search",
+            "updated_at": "2019-01-18T16:16:16.527Z",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "Top N network flows",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "optionsJSON": "{\"darkTheme\": false, \"hidePanelTitles\": false, \"useMargins\": true}",
+                "panelsJSON": "[{\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 0, \"y\": 8, \"w\": 24, \"i\": \"1\", \"h\": 15}, \"version\": \"7.0.0\", \"panelIndex\": \"1\", \"id\": \"3bc31900-1ae7-11e9-9eb0-d1ab52900288\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 24, \"i\": \"2\", \"h\": 8}, \"version\": \"7.0.0\", \"panelIndex\": \"2\", \"id\": \"b957b010-1ae7-11e9-9eb0-d1ab52900288\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 24, \"y\": 8, \"w\": 24, \"i\": \"3\", \"h\": 15}, \"version\": \"7.0.0\", \"panelIndex\": \"3\", \"id\": \"44042280-1ae7-11e9-9eb0-d1ab52900288\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 0, \"y\": 23, \"w\": 24, \"i\": \"4\", \"h\": 15}, \"version\": \"7.0.0\", \"panelIndex\": \"4\", \"id\": \"846bac40-1ae6-11e9-9eb0-d1ab52900288\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 24, \"y\": 23, \"w\": 24, \"i\": \"5\", \"h\": 15}, \"version\": \"7.0.0\", \"panelIndex\": \"5\", \"id\": \"8d0c61f0-1ae6-11e9-9eb0-d1ab52900288\"}, {\"embeddableConfig\": {}, \"type\": \"visualization\", \"gridData\": {\"x\": 24, \"y\": 0, \"w\": 24, \"i\": \"6\", \"h\": 8}, \"version\": \"7.0.0\", \"panelIndex\": \"6\", \"id\": \"e7c6efa0-1ae8-11e9-9eb0-d1ab52900288\"}]",
+                "timeRestore": false,
+                "title": "[Filebeat Netflow] Top-N Flows",
+                "version": 1
+            },
+            "id": "1374fe40-1ae8-11e9-9eb0-d1ab52900288",
+            "type": "dashboard",
+            "updated_at": "2019-01-18T16:40:54.334Z",
+            "version": 4
+        }
+    ],
+    "version": "7.0.0-SNAPSHOT"
+}

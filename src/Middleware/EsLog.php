@@ -25,26 +25,35 @@ class EsLog
     public function handle(Request $request, Closure $next)
     {
         $requestId = $request->header('requestId', uniqid());
+        $apiMethod = $request->header('method');
         self::$ubt->debug([
-            "url" => $request->url(),
-            "method" => $request->method(),
-            "path" => $request->path(),
-            "ip" => $request->ip(),
-            "query" => $request->query(),
-            "requestId" => $requestId,
+            'request' => [
+                "url" => $request->url(),
+                "method" => $request->method(),
+                "path" => $request->path(),
+                "ip" => $request->ip(),
+                "query" => $request->query(),
+                "requestId" => $requestId,
+                'api' => $apiMethod,
+            ],
         ]);
         $response = $next($request);
+
         $data = $response->getContent();
-        $path = $request->path();
-        if ($request->route()) {
-            $path = $request->route()->uri();
-        }
-        $path = $request->method() . ':' . $path;
+//        if ($request->route()) {
+//            $path = $request->route()->uri();
+//        }
         self::$ubt->debug([
-            'responseTime' => round(microtime(true) - LARAVEL_START, 2),
-            'path' => $path,
-            'data' => $data,
-            "requestId" => $requestId,
+            'request' => [
+                "method" => $request->method(),
+                "requestId" => $requestId,
+                'api' => $apiMethod,
+            ],
+            'response' => [
+                'responseTime' => round(microtime(true) - LARAVEL_START, 2),
+                'path' => $request->path(),
+                'data' => $data,
+            ]
         ]);
         return $response;
     }

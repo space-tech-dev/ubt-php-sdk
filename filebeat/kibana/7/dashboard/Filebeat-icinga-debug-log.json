@@ -1,0 +1,78 @@
+{
+    "objects": [
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchId": "c876e6a0-2418-11e7-a83b-d5f4cebac9ff-ecs",
+                "title": "Debuglog Facility [Filebeat Icinga] ECS",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"params\": {\"field\": \"@timestamp\", \"min_doc_count\": 1, \"extended_bounds\": {}, \"interval\": \"auto\", \"customInterval\": \"2h\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"icinga.debug.facility\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"listeners\": {}, \"title\": \"Icinga Debuglog Facility ECS\", \"params\": {\"times\": [], \"setYExtents\": false, \"defaultYExtents\": false, \"mode\": \"stacked\", \"addTimeMarker\": false, \"scale\": \"linear\", \"addLegend\": true, \"legendPosition\": \"right\", \"addTooltip\": true}, \"type\": \"histogram\"}"
+            },
+            "id": "0bc34b60-2419-11e7-a83b-d5f4cebac9ff-ecs",
+            "type": "visualization",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": []}"
+                },
+                "savedSearchId": "c876e6a0-2418-11e7-a83b-d5f4cebac9ff-ecs",
+                "title": "Debuglog Severity [Filebeat Icinga] ECS",
+                "uiStateJSON": "{\"vis\": {\"colors\": {\"information\": \"#629E51\", \"warning\": \"#E5AC0E\", \"notice\": \"#6ED0E0\", \"debug\": \"#BA43A9\"}}}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"date_histogram\", \"params\": {\"field\": \"@timestamp\", \"min_doc_count\": 1, \"extended_bounds\": {}, \"interval\": \"auto\", \"customInterval\": \"2h\"}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"field\": \"log.level\", \"orderBy\": \"1\", \"order\": \"desc\"}, \"schema\": \"group\", \"enabled\": true, \"id\": \"3\"}], \"listeners\": {}, \"title\": \"Icinga Debuglog Severity ECS\", \"params\": {\"times\": [], \"setYExtents\": false, \"defaultYExtents\": false, \"mode\": \"stacked\", \"addTimeMarker\": false, \"scale\": \"linear\", \"addLegend\": true, \"legendPosition\": \"right\", \"addTooltip\": true}, \"type\": \"histogram\"}"
+            },
+            "id": "fb09d4b0-2418-11e7-a83b-d5f4cebac9ff-ecs",
+            "type": "visualization",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "columns": [
+                    "icinga.debug.facility",
+                    "log.level",
+                    "message"
+                ],
+                "description": "",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [{\"query\": {\"match\": {\"event.module\": {\"query\": \"icinga\", \"type\": \"phrase\"}}}, \"$state\": {\"store\": \"appState\"}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"icinga\", \"key\": \"event.module\", \"alias\": null, \"type\": \"phrase\", \"params\": {\"query\": \"icinga\", \"type\": \"phrase\"}, \"disabled\": false, \"negate\": false}}, {\"query\": {\"match\": {\"fileset.name\": {\"query\": \"debug\", \"type\": \"phrase\"}}}, \"$state\": {\"store\": \"appState\"}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"debug\", \"key\": \"fileset.name\", \"alias\": null, \"type\": \"phrase\", \"params\": {\"query\": \"debug\", \"type\": \"phrase\"}, \"disabled\": false, \"negate\": false}}], \"index\": \"filebeat-*\", \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"highlightAll\": true, \"version\": true}"
+                },
+                "sort": [
+                    "@timestamp",
+                    "desc"
+                ],
+                "title": "Debug Log [Filebeat Icinga] ECS",
+                "version": 1
+            },
+            "id": "c876e6a0-2418-11e7-a83b-d5f4cebac9ff-ecs",
+            "type": "search",
+            "version": 2
+        },
+        {
+            "attributes": {
+                "description": "Filebeat Icinga module dashboard for the debug logs",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"highlightAll\": true, \"version\": true}"
+                },
+                "optionsJSON": "{\"darkTheme\": false}",
+                "panelsJSON": "[{\"type\": \"visualization\", \"size_y\": 3, \"col\": 1, \"size_x\": 6, \"row\": 1, \"panelIndex\": 1, \"id\": \"0bc34b60-2419-11e7-a83b-d5f4cebac9ff-ecs\"}, {\"type\": \"visualization\", \"size_y\": 3, \"col\": 7, \"size_x\": 6, \"row\": 1, \"panelIndex\": 2, \"id\": \"fb09d4b0-2418-11e7-a83b-d5f4cebac9ff-ecs\"}, {\"type\": \"search\", \"columns\": [\"icinga.debug.facility\", \"log.level\", \"message\"], \"col\": 1, \"size_y\": 29, \"size_x\": 12, \"row\": 4, \"sort\": [\"@timestamp\", \"desc\"], \"panelIndex\": 3, \"id\": \"c876e6a0-2418-11e7-a83b-d5f4cebac9ff-ecs\"}]",
+                "timeRestore": false,
+                "title": "[Filebeat Icinga] Debug Log ECS",
+                "uiStateJSON": "{}",
+                "version": 1
+            },
+            "id": "26309570-2419-11e7-a83b-d5f4cebac9ff-ecs",
+            "type": "dashboard",
+            "version": 2
+        }
+    ],
+    "version": "6.0.0-beta1-SNAPSHOT"
+}

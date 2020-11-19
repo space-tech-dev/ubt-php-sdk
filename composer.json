@@ -1,11 +1,14 @@
 {
-    "name": "spacecycle/ubt",
+    "name": "artisan-cloud/ubt",
     "type": "library",
-    "description": "User behavior data sdk",
+    "description": "User behavior Tracker sdk",
+    "bin": [
+        "filebeat/filebeat"
+    ],
     "authors": [
         {
             "name": "Walle",
-            "email": "Walle.Wang@withinspace.com"
+            "email": "nomail@qq.com"
         }
     ],
     "require": {
@@ -14,7 +17,8 @@
     },
     "autoload": {
         "psr-4": {
-            "SpaceCycle\\": "src/"
+            "ArtisanCloud\\UBT\\": "src/",
+            "ArtisanCloud\\UBT\\Filebeat": "filebeat/"
         }
     }
 }

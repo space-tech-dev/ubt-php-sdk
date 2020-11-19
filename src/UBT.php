@@ -51,12 +51,30 @@ class UBT
      * @param $msg
      * @param array $json
      */
+    function info($msg, $json = []) {
+        self::base('info', $msg, $json);
+    }
+
+    /**
+     * @param $msg
+     * @param array $json
+     */
     function error($msg, $json = []) {
         self::base('error', $msg, $json);
     }
 
+    /**
+     * 发送Error
+     * @param Exception $e
+     */
     function sendError(Exception $e) {
-        self::();
+        $this->error([
+            'error.msg' => $e->getMessage(),
+            'error.code' => $e->getCode(),
+            'error.stacks' => $e->getTraceAsString(),
+            'error.file' => $e->getFile(),
+            'error.line' => $e->getLine()
+        ]);
     }
 
     private static function base($logLevel, $msg, $json = []) {
@@ -72,7 +90,9 @@ class UBT
                 }
             }
         } else {
-            $formatData = $msg.' '.json_encode(array_merge(self::$baseParams, $json));
+            $formatData = $msg.' '.json_encode(array_merge(self::$baseParams, [
+                "msg" => $msg
+            ], $json));
         }
 
         switch ($logLevel) {

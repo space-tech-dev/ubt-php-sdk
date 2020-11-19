@@ -1,0 +1,270 @@
+{
+    "objects": [
+        {
+            "attributes": {
+                "description": "Overview of Zeek",
+                "hits": 0,
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "optionsJSON": "{\"useMargins\": true, \"hidePanelTitles\": false}",
+                "panelsJSON": "[{\"embeddableConfig\": {}, \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 48, \"i\": \"1\", \"h\": 20}, \"panelRefName\": \"panel_0\", \"panelIndex\": \"1\", \"version\": \"7.0.0-beta1\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 0, \"y\": 20, \"w\": 16, \"i\": \"2\", \"h\": 12}, \"panelRefName\": \"panel_1\", \"panelIndex\": \"2\", \"version\": \"7.0.0-beta1\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 16, \"y\": 20, \"w\": 16, \"i\": \"3\", \"h\": 12}, \"panelRefName\": \"panel_2\", \"panelIndex\": \"3\", \"version\": \"7.0.0-beta1\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 32, \"y\": 20, \"w\": 16, \"i\": \"4\", \"h\": 12}, \"panelRefName\": \"panel_3\", \"panelIndex\": \"4\", \"version\": \"7.0.0-beta1\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 0, \"y\": 32, \"w\": 16, \"i\": \"5\", \"h\": 12}, \"panelRefName\": \"panel_4\", \"panelIndex\": \"5\", \"version\": \"7.0.0-beta1\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 16, \"y\": 32, \"w\": 16, \"i\": \"6\", \"h\": 12}, \"panelRefName\": \"panel_5\", \"panelIndex\": \"6\", \"version\": \"7.0.0-beta1\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 32, \"y\": 32, \"w\": 16, \"i\": \"7\", \"h\": 12}, \"panelRefName\": \"panel_6\", \"panelIndex\": \"7\", \"version\": \"7.0.0-beta1\"}, {\"embeddableConfig\": {}, \"gridData\": {\"x\": 0, \"y\": 44, \"w\": 48, \"i\": \"8\", \"h\": 12}, \"panelRefName\": \"panel_7\", \"panelIndex\": \"8\", \"version\": \"7.0.0-beta1\"}]",
+                "timeRestore": false,
+                "title": "[Filebeat Zeek] Overview",
+                "version": 1
+            },
+            "id": "7cbb5410-3700-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "dashboard": "7.0.0"
+            },
+            "references": [
+                {
+                    "id": "f469f230-370c-11e9-aa6d-ff445a78330c",
+                    "name": "panel_0",
+                    "type": "visualization"
+                },
+                {
+                    "id": "1df7ea80-370d-11e9-aa6d-ff445a78330c",
+                    "name": "panel_1",
+                    "type": "visualization"
+                },
+                {
+                    "id": "466e5850-370d-11e9-aa6d-ff445a78330c",
+                    "name": "panel_2",
+                    "type": "visualization"
+                },
+                {
+                    "id": "649acd40-370d-11e9-aa6d-ff445a78330c",
+                    "name": "panel_3",
+                    "type": "visualization"
+                },
+                {
+                    "id": "9436c270-370d-11e9-aa6d-ff445a78330c",
+                    "name": "panel_4",
+                    "type": "visualization"
+                },
+                {
+                    "id": "bec2f0e0-370d-11e9-aa6d-ff445a78330c",
+                    "name": "panel_5",
+                    "type": "visualization"
+                },
+                {
+                    "id": "e042fda0-370d-11e9-aa6d-ff445a78330c",
+                    "name": "panel_6",
+                    "type": "visualization"
+                },
+                {
+                    "id": "f8c40810-370d-11e9-aa6d-ff445a78330c",
+                    "name": "panel_7",
+                    "type": "visualization"
+                }
+            ],
+            "type": "dashboard",
+            "updated_at": "2019-02-23T05:05:18.205Z",
+            "version": "WzMxMTYsNF0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+                },
+                "title": "Destination Geo [Filebeat Zeek]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"geohash_grid\", \"params\": {\"mapZoom\": 2, \"precision\": 2, \"useGeocentroid\": true, \"autoPrecision\": true, \"field\": \"destination.geo.location\", \"isFilteredByCollar\": true, \"mapCenter\": [0, 0]}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"tile_map\", \"title\": \"Destination Geo [Filebeat Zeek]\", \"params\": {\"dimensions\": {\"metric\": {\"aggType\": \"count\", \"params\": {}, \"accessor\": 0, \"format\": {\"id\": \"number\"}}, \"geohash\": null, \"geocentroid\": null}, \"isDesaturated\": true, \"mapType\": \"Scaled Circle Markers\", \"addTooltip\": true, \"colorSchema\": \"Yellow to Red\", \"mapZoom\": 2, \"heatClusterSize\": 1.5, \"wms\": {\"options\": {\"format\": \"image/png\", \"transparent\": true}, \"enabled\": false}, \"legendPosition\": \"bottomright\", \"mapCenter\": [0, 0]}}"
+            },
+            "id": "f469f230-370c-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "visualization": "7.0.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-02-26T00:06:27.634Z",
+            "version": "WzMyNzUsNV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+                },
+                "title": "Network Transport [Filebeat Zeek]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"network.transport\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Network Transport [Filebeat Zeek]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"dimensions\": {\"metric\": {\"aggType\": \"count\", \"params\": {}, \"accessor\": 0, \"format\": {\"id\": \"number\"}}}, \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "1df7ea80-370d-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "visualization": "7.0.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-02-26T00:07:08.521Z",
+            "version": "WzMyNzgsNV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+                },
+                "title": "Network Application [Filebeat Zeek]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"network.application\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Network Application [Filebeat Zeek]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"dimensions\": {\"metric\": {\"aggType\": \"count\", \"params\": {}, \"accessor\": 0, \"format\": {\"id\": \"number\"}}}, \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "466e5850-370d-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "visualization": "7.0.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-02-26T00:06:41.868Z",
+            "version": "WzMyNzYsNV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+                },
+                "title": "Network Traffic Direction [Filebeat Zeek]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 5, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"network.direction\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Network Traffic Direction [Filebeat Zeek]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"dimensions\": {\"metric\": {\"aggType\": \"count\", \"params\": {}, \"accessor\": 0, \"format\": {\"id\": \"number\"}}}, \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "649acd40-370d-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "visualization": "7.0.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-02-26T00:06:55.885Z",
+            "version": "WzMyNzcsNV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+                },
+                "title": "Top DNS Domains [Filebeat Zeek]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 10, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"zeek.dns.query\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Top DNS Domains [Filebeat Zeek]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"dimensions\": {\"metric\": {\"aggType\": \"count\", \"params\": {}, \"accessor\": 0, \"format\": {\"id\": \"number\"}}}, \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "9436c270-370d-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "visualization": "7.0.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-02-26T00:07:23.763Z",
+            "version": "WzMyNzksNV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+                },
+                "title": "Top URL Domains [Filebeat Zeek]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 10, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"url.domain\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Top URL Domains [Filebeat Zeek]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"dimensions\": {\"buckets\": [{\"aggType\": \"terms\", \"params\": {}, \"accessor\": 0, \"format\": {\"params\": {\"otherBucketLabel\": \"Other\", \"missingBucketLabel\": \"Missing\", \"id\": \"string\"}, \"id\": \"terms\"}}], \"metric\": {\"aggType\": \"count\", \"params\": {}, \"accessor\": 1, \"format\": {\"id\": \"number\"}}}, \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "bec2f0e0-370d-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "visualization": "7.0.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-02-26T00:07:49.910Z",
+            "version": "WzMyODEsNV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+                },
+                "title": "Top SSL Servers [Filebeat Zeek]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [{\"type\": \"count\", \"params\": {}, \"schema\": \"metric\", \"enabled\": true, \"id\": \"1\"}, {\"type\": \"terms\", \"params\": {\"size\": 10, \"otherBucketLabel\": \"Other\", \"missingBucket\": false, \"orderBy\": \"1\", \"order\": \"desc\", \"field\": \"zeek.ssl.server_name\", \"missingBucketLabel\": \"Missing\", \"otherBucket\": false}, \"schema\": \"segment\", \"enabled\": true, \"id\": \"2\"}], \"type\": \"pie\", \"title\": \"Top SSL Servers [Filebeat Zeek]\", \"params\": {\"labels\": {\"values\": true, \"truncate\": 100, \"last_level\": true, \"show\": false}, \"type\": \"pie\", \"dimensions\": {\"metric\": {\"aggType\": \"count\", \"params\": {}, \"accessor\": 0, \"format\": {\"id\": \"number\"}}}, \"addTooltip\": true, \"isDonut\": true, \"addLegend\": true, \"legendPosition\": \"right\"}}"
+            },
+            "id": "e042fda0-370d-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "visualization": "7.0.0"
+            },
+            "references": [
+                {
+                    "id": "filebeat-*",
+                    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+                    "type": "index-pattern"
+                }
+            ],
+            "type": "visualization",
+            "updated_at": "2019-02-26T00:07:36.653Z",
+            "version": "WzMyODAsNV0="
+        },
+        {
+            "attributes": {
+                "description": "",
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                },
+                "title": "Number of Sessions Overtime [Filebeat Zeek]",
+                "uiStateJSON": "{}",
+                "version": 1,
+                "visState": "{\"aggs\": [], \"type\": \"metrics\", \"title\": \"Number of Sessions Overtime [Filebeat Zeek]\", \"params\": {\"type\": \"timeseries\", \"axis_scale\": \"normal\", \"time_field\": \"@timestamp\", \"show_grid\": 1, \"interval\": \"auto\", \"axis_position\": \"left\", \"index_pattern\": \"filebeat-*\", \"series\": [{\"id\": \"61ca57f1-469d-11e7-af02-69e470af7417\", \"stacked\": \"none\", \"split_mode\": \"everything\", \"axis_position\": \"right\", \"point_size\": 1, \"line_width\": 1, \"formatter\": \"number\", \"separate_axis\": 0, \"chart_type\": \"line\", \"fill\": 0.5, \"metrics\": [{\"type\": \"count\", \"id\": \"61ca57f2-469d-11e7-af02-69e470af7417\"}], \"color\": \"#68BC00\"}], \"show_legend\": 1, \"axis_formatter\": \"number\", \"id\": \"61ca57f0-469d-11e7-af02-69e470af7417\"}}"
+            },
+            "id": "f8c40810-370d-11e9-aa6d-ff445a78330c",
+            "migrationVersion": {
+                "visualization": "7.0.0"
+            },
+            "references": [],
+            "type": "visualization",
+            "updated_at": "2019-02-26T00:05:56.379Z",
+            "version": "WzMyNzQsNV0="
+        }
+    ],
+    "version": "7.0.0-beta1"
+}
