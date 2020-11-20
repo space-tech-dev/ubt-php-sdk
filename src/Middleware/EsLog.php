@@ -24,8 +24,11 @@ class EsLog
      */
     public function handle(Request $request, Closure $next)
     {
+
         $requestId = $request->header('requestId', uniqid());
         $apiMethod = $request->header('method');
+
+        $laravelStart = defined('LARAVEL_START') ? LARAVEL_START : microtime(true);
 
         self::$ubt->info([
             'request' => [
@@ -48,13 +51,14 @@ class EsLog
                 'api' => $apiMethod,
             ],
             'response' => [
-                'responseTime' => round(microtime(true) - LARAVEL_START, 2),
+                'responseTime' => round(microtime(true) - $laravelStart, 2),
                 'path' => $request->path(),
             ]
         ]);
         self::$ubt->debug([
             'request' => [
                 "requestId" => $requestId,
+                'api' => $apiMethod,
             ],
             'response' => [
                 'data' => $data

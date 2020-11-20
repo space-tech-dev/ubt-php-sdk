@@ -1,100 +1,106 @@
 <?php
 
 namespace ArtisanCloud\UBT;
+
 use Exception;
-use Logger;
 use Throwable;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\RedisHandler;
+use Predis\Client;
 
 class UBT
 {
     protected static $channel = "log4php";
-    protected static $logger;
-    protected $baseParams = [];
+    private static $logger;
+    protected static $baseParams = [];
 
     public function __construct()
     {
         if (!self::$logger) {
-            self::$logger = Logger::getLogger(self::$channel);
-            Logger::configure(array(
-                'rootLogger' => array(
-                    'level' => env("UBT_LOG_LEVEL", "INFO"),
-                    'appenders' => array('default'),
-                ),
-                'loggers' => array(
-                    'dev' => array(
-                        'level' => 'DEBUG',
-                        'appenders' => array('default'),
-                    ),
-                ),
-                'appenders' => array(
-                    'default' => array(
-                        'class' => 'LoggerAppenderRollingFile',
-                        'layout' => array(
-                            'class' => 'LoggerLayoutPattern',
-                            'params' => [
-                                'conversionPattern' => "%date %-5level %msg%n",
-                            ]
-                        ),
-                        'params' => [
-                            'file' => storage_path().'/ubt-log/ubt.log',
-                            'maxFileSize' => '10MB',
-                            'maxBackupIndex' => 10,
-                        ],
-                    ),
-                ),
-            ));
-            $this->baseParams = [
-                'APP_ENV' => env('APP_ENV')
+            self::$baseParams = [
+                'appName' => env('UBT_APP_NAME', env('APP_NAME', 'app')),
+                'appVersion' => env('UBT_APP_VERSION', env('APP_VERSION', 'app')),
+                'serverHostname' => gethostname(),
+                'serverAddr' => $_SERVER['SERVER_ADDR'],
             ];
+
+            $LOG_LEVEL = $this->formatLogLevel(env('UBT_LOG_LEVEL', 'DEBUG'));
+            // the default date format is "Y-m-d\TH:i:sP"
+            $dateFormat = "c";
+            // the default output format is "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n"
+            $output = "%datetime% %level_name% %message%\n";
+            // finally, create a formatter
+            $formatter = new LineFormatter($output, $dateFormat);
+
+            self::$logger = $logger = new Logger('logger');
+
+            // 发送到文件
+            $streamHandler = new StreamHandler(storage_path() . '/logs/ubt-redis.log', $LOG_LEVEL);
+            $streamHandler->setFormatter($formatter);
+            $logger->pushHandler($streamHandler);
+
+            // 发送到redis
+            if (env('UBT_REDIS')) {
+                $redisHandler = new RedisHandler(new Client(env('UBT_REDIS')), "logs", $LOG_LEVEL);
+                $redisHandler->setFormatter($formatter);
+                $logger->pushHandler($redisHandler);
+            }
         }
     }
 
-    static function config($config) {
-        Logger::configure($config);
-        return Logger::getRootLogger();
+    static function setBaseParams($params = [])
+    {
+        self::$baseParams = array_merge(self::$baseParams, $params);
     }
 
-    function setBaseParams($params = []) {
-        $this->baseParams = array_merge();
-    }
-
-    function debug($msg, $json = []) {
+    function debug($msg, $json = [])
+    {
         $this->base('debug', $msg, $json);
     }
 
-    function info($msg, $json = []) {
+    function info($msg, $json = [])
+    {
         $this->base('info', $msg, $json);
     }
 
-    function notice($msg, $json = []) {
+    function notice($msg, $json = [])
+    {
         $this->base('notice', $msg, $json);
     }
 
-    function warn($msg, $json = []) {
-        $this->base('warn', $msg, $json);
+    function warning($msg, $json = [])
+    {
+        $this->base('warning', $msg, $json);
     }
 
-    function error($msg, $json = []) {
+    function error($msg, $json = [])
+    {
         $this->base('error', $msg, $json);
     }
 
-    function critical($msg, $json = []) {
+    function critical($msg, $json = [])
+    {
         $this->base('critical', $msg, $json);
     }
 
-    function alert($msg, $json = []) {
+    function alert($msg, $json = [])
+    {
         $this->base('alert', $msg, $json);
     }
 
-    function emerg($msg, $json = []) {
-        $this->base('emerg', $msg, $json);
+    function emergency($msg, $json = [])
+    {
+        $this->base('emergency', $msg, $json);
     }
 
     /**
      * 发送Error
      * @param Throwable $e
      */
-    function sendError(\Throwable $e) {
+    function sendError(\Throwable $e)
+    {
         $this->error([
             'error.msg' => $e->getMessage(),
             'error.code' => $e->getCode(),
@@ -104,34 +110,57 @@ class UBT
         ]);
     }
 
-    private function base($logLevel, $msg, $json = []) {
+    protected function formatLogLevel($logLevel = "debug") {
+        switch (mb_strtolower($logLevel)) {
+            case 'info':
+                return Logger::INFO;
+            case 'notice':
+                return Logger::NOTICE;
+            case 'waring':
+                return Logger::WARNING;
+            case 'error':
+                return Logger::ERROR;
+            case 'critical':
+                return Logger::CRITICAL;
+            case 'alert':
+                return Logger::ALERT;
+            default:
+                return Logger::DEBUG;
+        }
+    }
 
+    protected function formatMsg($msg, $json = [])
+    {
         // 如果msg不是字符串，那么只会接受一个msg，
         if (gettype($msg) !== 'string') {
             try {
-                $formatData = json_encode(array_merge($this->baseParams, $msg));
+                $formatData = json_encode(array_merge(self::$baseParams, $msg));
             } catch (Exception $e) {
                 if (Utils::isNoEnvProduction()) {
                     throw $e;
                 }
-                return;
+                return '';
             }
         } else {
-            $formatData = json_encode(array_merge($this->baseParams, [
+            $formatData = json_encode(array_merge(self::$baseParams, [
                 "msg" => $msg,
-                "logLevel" => strtoupper($logLevel)
+//                "logLevel" => strtoupper($logLevel)
             ], $json));
         }
 
-        switch ($logLevel) {
-            case 'info':
-            case 'debug':
-            case 'error':
-            case 'warn':
-                self::$logger->{$logLevel}($formatData);
-                break;
-            default:
-                self::$logger->error($formatData);
-        }
+        return $formatData;
+    }
+
+    private function base($logLevel, $msg, $json = [])
+    {
+
+        $formatData = $this->formatMsg($msg, $json);
+
+        self::$logger->{$logLevel}($formatData);
+    }
+
+    function sendToRedis()
+    {
+
     }
 }
