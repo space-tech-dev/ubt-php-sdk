@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SpaceCycle;
+namespace ArtisanCloud\UBT;
 
 
 class Utils

@@ -1,24 +1,21 @@
 {
-    "name": "artisan-cloud/ubt",
-    "type": "library",
-    "description": "User behavior Tracker sdk",
-    "bin": [
-        "filebeat/filebeat"
-    ],
-    "authors": [
-        {
-            "name": "Walle",
-            "email": "nomail@qq.com"
-        }
-    ],
-    "require": {
-        "apache/log4php": "2.3.0",
-        "laravel/framework": "~7.15"
-    },
-    "autoload": {
-        "psr-4": {
-            "ArtisanCloud\\UBT\\": "src/",
-            "ArtisanCloud\\UBT\\Filebeat": "filebeat/"
-        }
+  "name": "artisan-cloud/ubt",
+  "type": "library",
+  "description": "User behavior Tracker sdk",
+  "authors": [
+    {
+      "name": "Walle",
+      "email": "nomail@qq.com"
     }
+  ],
+  "require": {
+    "apache/log4php": "2.3.0",
+    "laravel/framework": "~7.15",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ArtisanCloud\\UBT\\": "src/"
+    }
+  }
 }

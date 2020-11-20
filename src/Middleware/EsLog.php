@@ -1,10 +1,10 @@
 <?php
 
-namespace SpaceCycle\Middleware;
+namespace ArtisanCloud\UBT\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use SpaceCycle\UBT;
+use ArtisanCloud\UBT\UBT;
 
 class EsLog
 {
@@ -26,7 +26,8 @@ class EsLog
     {
         $requestId = $request->header('requestId', uniqid());
         $apiMethod = $request->header('method');
-        self::$ubt->debug([
+
+        self::$ubt->info([
             'request' => [
                 "url" => $request->url(),
                 "method" => $request->method(),
@@ -40,10 +41,7 @@ class EsLog
         $response = $next($request);
 
         $data = $response->getContent();
-//        if ($request->route()) {
-//            $path = $request->route()->uri();
-//        }
-        self::$ubt->debug([
+        self::$ubt->info([
             'request' => [
                 "method" => $request->method(),
                 "requestId" => $requestId,
@@ -52,7 +50,14 @@ class EsLog
             'response' => [
                 'responseTime' => round(microtime(true) - LARAVEL_START, 2),
                 'path' => $request->path(),
-                'data' => $data,
+            ]
+        ]);
+        self::$ubt->debug([
+            'request' => [
+                "requestId" => $requestId,
+            ],
+            'response' => [
+                'data' => $data
             ]
         ]);
         return $response;

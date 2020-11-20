@@ -1,73 +1,100 @@
 <?php
 
-namespace SpaceCycle;
+namespace ArtisanCloud\UBT;
 use Exception;
 use Logger;
+use Throwable;
 
 class UBT
 {
     protected static $channel = "log4php";
     protected static $logger;
-    protected static $baseParams = [];
+    protected $baseParams = [];
 
     public function __construct()
     {
         if (!self::$logger) {
             self::$logger = Logger::getLogger(self::$channel);
-            $configPath = dirname(__DIR__).'/ubt-config.properties';
-            if (file_exists($configPath)) {
-                self::configByFile($configPath);
-            }
-            self::$baseParams = [
+            Logger::configure(array(
+                'rootLogger' => array(
+                    'level' => env("UBT_LOG_LEVEL", "INFO"),
+                    'appenders' => array('default'),
+                ),
+                'loggers' => array(
+                    'dev' => array(
+                        'level' => 'DEBUG',
+                        'appenders' => array('default'),
+                    ),
+                ),
+                'appenders' => array(
+                    'default' => array(
+                        'class' => 'LoggerAppenderRollingFile',
+                        'layout' => array(
+                            'class' => 'LoggerLayoutPattern',
+                            'params' => [
+                                'conversionPattern' => "%date %-5level %msg%n",
+                            ]
+                        ),
+                        'params' => [
+                            'file' => storage_path().'/ubt-log/ubt.log',
+                            'maxFileSize' => '10MB',
+                            'maxBackupIndex' => 10,
+                        ],
+                    ),
+                ),
+            ));
+            $this->baseParams = [
                 'APP_ENV' => env('APP_ENV')
             ];
         }
     }
 
-    static function configByFile($configPath) {
-        $file = fopen($configPath, 'rw');
-        $data = fread($file, filesize($configPath));
-        if (strpos($data, '${storagePath}') !== -1) {
-            $file = fopen($configPath, 'w');
-            $data = str_replace('${storagePath}', storage_path(), $data);
-            fwrite($file, $data);
-        }
-        Logger::configure($configPath);
-    }
-
     static function config($config) {
         Logger::configure($config);
+        return Logger::getRootLogger();
     }
 
-    /**
-     * @param $msg
-     * @param array $json
-     */
+    function setBaseParams($params = []) {
+        $this->baseParams = array_merge();
+    }
+
     function debug($msg, $json = []) {
-        self::base('debug', $msg, $json);
+        $this->base('debug', $msg, $json);
     }
 
-    /**
-     * @param $msg
-     * @param array $json
-     */
     function info($msg, $json = []) {
-        self::base('info', $msg, $json);
+        $this->base('info', $msg, $json);
     }
 
-    /**
-     * @param $msg
-     * @param array $json
-     */
+    function notice($msg, $json = []) {
+        $this->base('notice', $msg, $json);
+    }
+
+    function warn($msg, $json = []) {
+        $this->base('warn', $msg, $json);
+    }
+
     function error($msg, $json = []) {
-        self::base('error', $msg, $json);
+        $this->base('error', $msg, $json);
+    }
+
+    function critical($msg, $json = []) {
+        $this->base('critical', $msg, $json);
+    }
+
+    function alert($msg, $json = []) {
+        $this->base('alert', $msg, $json);
+    }
+
+    function emerg($msg, $json = []) {
+        $this->base('emerg', $msg, $json);
     }
 
     /**
      * 发送Error
-     * @param Exception $e
+     * @param Throwable $e
      */
-    function sendError(Exception $e) {
+    function sendError(\Throwable $e) {
         $this->error([
             'error.msg' => $e->getMessage(),
             'error.code' => $e->getCode(),
@@ -77,33 +104,34 @@ class UBT
         ]);
     }
 
-    private static function base($logLevel, $msg, $json = []) {
+    private function base($logLevel, $msg, $json = []) {
 
-        $formatData = "";
         // 如果msg不是字符串，那么只会接受一个msg，
         if (gettype($msg) !== 'string') {
             try {
-                $formatData = json_encode(array_merge(self::$baseParams, $msg));
+                $formatData = json_encode(array_merge($this->baseParams, $msg));
             } catch (Exception $e) {
                 if (Utils::isNoEnvProduction()) {
                     throw $e;
                 }
+                return;
             }
         } else {
-            $formatData = $msg.' '.json_encode(array_merge(self::$baseParams, [
-                "msg" => $msg
+            $formatData = json_encode(array_merge($this->baseParams, [
+                "msg" => $msg,
+                "logLevel" => strtoupper($logLevel)
             ], $json));
         }
 
         switch ($logLevel) {
+            case 'info':
             case 'debug':
-                self::$logger->debug($formatData);
-                break;
             case 'error':
-                self::$logger->error($formatData);
+            case 'warn':
+                self::$logger->{$logLevel}($formatData);
                 break;
             default:
-                self::$logger->info($formatData);
+                self::$logger->error($formatData);
         }
     }
 }
