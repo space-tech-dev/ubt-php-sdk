@@ -153,10 +153,12 @@ class UBT
 
     private function base($logLevel, $msg, $json = [])
     {
+        try{
+            $formatData = $this->formatMsg($msg, $json);
+            self::$logger->{$logLevel}($formatData);
+        } catch (Exception $exception) {}
 
-        $formatData = $this->formatMsg($msg, $json);
 
-        self::$logger->{$logLevel}($formatData);
     }
 
     function sendToRedis()
