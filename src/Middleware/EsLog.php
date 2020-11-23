@@ -30,6 +30,7 @@ class EsLog
             $requestId = $request->header('requestId', uniqid());
             $apiMethod = $request->header('method');
             $laravelStart = defined('LARAVEL_START') ? LARAVEL_START : microtime(true);
+
             self::$ubt->info([
                 'request' => [
                     "url" => $request->url(),
@@ -39,11 +40,13 @@ class EsLog
                     "query" => $request->query(),
                     "requestId" => $requestId,
                     'api' => $apiMethod,
+                    'postData' => $request->all(),
                 ],
             ]);
 
             // 等待返回结果
             $response = $next($request);
+
 
             // 获取返回内容
             $data = $response->getContent();
@@ -69,10 +72,10 @@ class EsLog
                     'data' => $data
                 ]
             ]);
-//            return $response;
+            return $response;
         } catch (\Exception $e) {
             if (!isset($response)) {
-                $next($request);
+                return $next($request);
             }
         }
     }
