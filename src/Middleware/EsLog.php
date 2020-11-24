@@ -32,15 +32,16 @@ class EsLog
             $laravelStart = defined('LARAVEL_START') ? LARAVEL_START : microtime(true);
 
             self::$ubt->info([
+                'logType' => 'request',
                 'request' => [
                     "url" => $request->url(),
                     "method" => $request->method(),
                     "path" => $request->path(),
                     "ip" => $request->getClientIp(),
-                    "query" => $request->query(),
+                    "query" => json_encode($request->query()),
                     "requestId" => $requestId,
                     'api' => $apiMethod,
-                    'postData' => $request->all(),
+                    'postData' => json_encode($request->all()),
                 ],
             ]);
 
@@ -51,6 +52,7 @@ class EsLog
             // 获取返回内容
             $data = $response->getContent();
             self::$ubt->info([
+                'logType' => 'response',
                 'request' => [
                     "method" => $request->method(),
                     "requestId" => $requestId,
@@ -64,6 +66,7 @@ class EsLog
 
             // response data暂时定义为debug类型，后面看日志量大小可以随时被关闭。
             self::$ubt->debug([
+                'logType' => 'response:data',
                 'request' => [
                     "requestId" => $requestId,
 //                'api' => $apiMethod,

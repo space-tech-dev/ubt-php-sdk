@@ -5,7 +5,7 @@ namespace ArtisanCloud\UBT;
 use Exception;
 use Throwable;
 use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+use Monolog\Handler\RotatingFileHandler;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RedisHandler;
 use Predis\Client;
@@ -23,7 +23,7 @@ class UBT
                 'appName' => env('UBT_APP_NAME', env('APP_NAME', 'app')),
                 'appVersion' => env('UBT_APP_VERSION', env('APP_VERSION', 'app')),
                 'serverHostname' => gethostname(),
-                'serverAddr' => $_SERVER['SERVER_ADDR'],
+                'serverAddr' => $_SERVER ? $_SERVER['SERVER_ADDR'] : '',
             ];
 
             $LOG_LEVEL = $this->formatLogLevel(env('UBT_LOG_LEVEL', 'DEBUG'));
@@ -37,13 +37,13 @@ class UBT
             self::$logger = $logger = new Logger('logger');
 
             // 发送到文件
-            $streamHandler = new StreamHandler(storage_path() . '/logs/ubt-redis.log', $LOG_LEVEL);
+            $streamHandler = new RotatingFileHandler(storage_path() . '/logs/ubt-redis.log', 7, $LOG_LEVEL);
             $streamHandler->setFormatter($formatter);
             $logger->pushHandler($streamHandler);
 
             // 发送到redis
             if (env('UBT_REDIS')) {
-                $redisHandler = new RedisHandler(new Client(env('UBT_REDIS')), "logs", $LOG_LEVEL);
+                $redisHandler = new RedisHandler(new Client(env('UBT_REDIS')), "ubt-logs", $LOG_LEVEL);
                 $redisHandler->setFormatter($formatter);
                 $logger->pushHandler($redisHandler);
             }
