@@ -3,12 +3,16 @@
 namespace ArtisanCloud\UBT;
 
 use Exception;
+use Monolog\Handler\MongoDBHandler;
+use PhpAmqpLib\Message\AMQPMessage;
 use Throwable;
 use Monolog\Logger;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RedisHandler;
+use Monolog\Handler\AmqpHandler;
 use Predis\Client;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 class UBT
 {
@@ -23,7 +27,7 @@ class UBT
                 'appName' => env('UBT_APP_NAME', env('APP_NAME', 'app')),
                 'appVersion' => env('UBT_APP_VERSION', env('APP_VERSION', 'app')),
                 'serverHostname' => gethostname(),
-                'serverAddr' => $_SERVER ? $_SERVER['SERVER_ADDR'] : '',
+                'serverAddr' => isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '',
             ];
 
             $LOG_LEVEL = $this->formatLogLevel(env('UBT_LOG_LEVEL', 'DEBUG'));
@@ -153,11 +157,8 @@ class UBT
 
     private function base($logLevel, $msg, $json = [])
     {
-        try{
-            $formatData = $this->formatMsg($msg, $json);
-            self::$logger->{$logLevel}($formatData);
-        } catch (Exception $exception) {}
-
+        $formatData = $this->formatMsg($msg, $json);
+        self::$logger->{$logLevel}($formatData);
 
     }
 
