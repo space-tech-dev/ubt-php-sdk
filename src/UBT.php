@@ -23,11 +23,12 @@ class UBT
     public function __construct()
     {
         if (!self::$logger) {
+
             self::$baseParams = [
                 'appName' => env('UBT_APP_NAME', env('APP_NAME', 'app')),
                 'appVersion' => env('UBT_APP_VERSION', env('APP_VERSION', 'app')),
                 'serverHostname' => gethostname(),
-                'serverAddr' => isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '',
+                'serverAddr' => $this->getIpAddress(),
             ];
 
             $LOG_LEVEL = $this->formatLogLevel(env('UBT_LOG_LEVEL', 'DEBUG'));
@@ -51,6 +52,15 @@ class UBT
                 $redisHandler->setFormatter($formatter);
                 $logger->pushHandler($redisHandler);
             }
+
+            if (env('UBT_AMQP_HOST')) {
+                $connection = new AMQPStreamConnection(env('UBT_AMQP_HOST'), env('UBT_AMQP_PORT'), env('UBT_AMQP_USER'), env("UBT_AMQP_PASSWORD"));
+                $channel = $connection->channel();
+                $mqHandler = new AmqpHandler($channel, env('UBT_AMQP_EXCHANGE', 'logs'), $LOG_LEVEL);
+                $mqHandler->setFormatter($formatter);
+                $logger->pushHandler($mqHandler);
+            }
+
         }
     }
 
@@ -157,13 +167,19 @@ class UBT
 
     private function base($logLevel, $msg, $json = [])
     {
-        $formatData = $this->formatMsg($msg, $json);
-        self::$logger->{$logLevel}($formatData);
-
+        try {
+            $formatData = $this->formatMsg($msg, $json);
+            self::$logger->{$logLevel}($formatData);
+        } catch (\Throwable $e) {}
     }
 
-    function sendToRedis()
-    {
-
+    private function getIpAddress() {
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ipAddresses = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            return trim(end($ipAddresses));
+        }
+        else {
+            return isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
+        }
     }
 }
