@@ -3,8 +3,6 @@
 namespace ArtisanCloud\UBT;
 
 use Exception;
-use Monolog\Handler\MongoDBHandler;
-use PhpAmqpLib\Message\AMQPMessage;
 use Throwable;
 use Monolog\Logger;
 use Monolog\Handler\RotatingFileHandler;
@@ -51,11 +49,13 @@ class UBT
                 $redisHandler = new RedisHandler(new Client(env('UBT_REDIS')), "ubt-logs", $LOG_LEVEL);
                 $redisHandler->setFormatter($formatter);
                 $logger->pushHandler($redisHandler);
-            }
-
-            if (env('UBT_AMQP_HOST')) {
-                $connection = new AMQPStreamConnection(env('UBT_AMQP_HOST'), env('UBT_AMQP_PORT'), env('UBT_AMQP_USER'), env("UBT_AMQP_PASSWORD"));
+            } else if (env('UBT_AMQP_URL')) {
+                // 发送到Rabbit MQ
+                $url = parse_url(getenv('UBT_AMQP_URL'));
+                $connection = new AMQPStreamConnection($url['host'], $url['port'], $url['user'], $url['pass'], substr($url['path'], 1));
                 $channel = $connection->channel();
+
+                $channel->exchange_declare(env('UBT_AMQP_EXCHANGE', 'logs'), 'direct', false, true, false); //声明初始化交换机
                 $mqHandler = new AmqpHandler($channel, env('UBT_AMQP_EXCHANGE', 'logs'), $LOG_LEVEL);
                 $mqHandler->setFormatter($formatter);
                 $logger->pushHandler($mqHandler);
