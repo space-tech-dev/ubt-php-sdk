@@ -6,16 +6,10 @@ use Closure;
 use Html2Text\Html2Text;
 use Illuminate\Http\Request;
 use ArtisanCloud\UBT\UBT;
+use Sentry;
 
 class EsLog
 {
-    protected static $ubt;
-
-    public function __construct()
-    {
-        self::$ubt = new UBT();
-    }
-
     /**
      * Handle an incoming request.
      *
@@ -32,9 +26,9 @@ class EsLog
             $apiMethod = $request->header('method');
             $laravelStart = defined('LARAVEL_START') ? LARAVEL_START : microtime(true);
 
-            self::$ubt->info([
+            UBT::info('', [
                 'logType' => 'request',
-                'res' => [
+                'req' => [
                     "url" => $request->url(),
                     "method" => $request->method(),
                     "path" => $request->path(),
@@ -69,7 +63,7 @@ class EsLog
                     ],
                     'res' => [
                         'contentType' => $contentType,
-                        'responseTime' => (microtime(true) - $laravelStart) * 1000,
+                        'responseTime' => ceil((microtime(true) - $laravelStart) * 1000),
                         'data' => '***'
                     ]
                 ];
@@ -85,11 +79,12 @@ class EsLog
                     // 如果返回了自定义的错误，那么也记录一下对应的值
                     $resMsg['res']['data'] = $this->formatResData($response, $contentType);
                 }
-                self::$ubt->info($resMsg);
+                UBT::info('', $resMsg);
             } catch (\Throwable $e) {}
 
             return $response;
         } catch (\Exception $e) {
+            Sentry\captureException($e);
             if (!isset($response)) {
                 return $next($request);
             }

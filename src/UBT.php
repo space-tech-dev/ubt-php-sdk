@@ -2,19 +2,18 @@
 
 namespace ArtisanCloud\UBT;
 
-use Exception;
+use ArtisanCloud\UBT\Drivers\AMQPDriver;
+use ArtisanCloud\UBT\Drivers\FileDriver;
+use ArtisanCloud\UBT\Drivers\RedisDriver;
+use Illuminate\Config\Repository;
+use Illuminate\Contracts\Foundation\Application;
+use Sentry;
 use Throwable;
 use Monolog\Logger;
-use Monolog\Handler\RotatingFileHandler;
 use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\RedisHandler;
-use Monolog\Handler\AmqpHandler;
-use Predis\Client;
-use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 class UBT
 {
-    protected static $channel = "log4php";
     private static $logger;
     protected static $baseParams = [];
     /**
@@ -25,145 +24,99 @@ class UBT
      * @var int
      */
     private static $LOG_LEVEL;
+    /**
+     * @var array|Repository|Application|mixed
+     */
+    private static $config;
 
     public function __construct()
     {
-        if (!self::$logger) {
 
-            self::$baseParams = [
-                'appName' => env('UBT_APP_NAME', env('APP_NAME', 'app')),
-                'appVersion' => env('UBT_APP_VERSION', env('APP_VERSION', 'app')),
-                'serverHostname' => gethostname(),
-                'serverAddr' => Utils::getClientIpAddress(),
-            ];
+    }
 
-            self::$LOG_LEVEL = Utils::formatLogLevel(env('UBT_LOG_LEVEL', 'DEBUG'));
+    private static function initLogger() {
+        try {
+            if (!self::$logger) {
+                Sentry\init(['dsn' => 'https://74a17d6ba5d7452b8987457ef9904c8b@o484937.ingest.sentry.io/5538818']);
 
-            // the default date format is "Y-m-d\TH:i:sP"
-            $dateFormat = "c";
-            // the default output format is "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n"
-            $output = "%datetime% %level_name% %message%\n";
-            // finally, create a formatter
-            self::$formatter = new LineFormatter($output, $dateFormat);
+                self::$config = Utils::getConfig();
+                self::$baseParams = [
+//                    'logType' => 'log',
+                    'appName' => self::$config['appName'],
+                    'appVersion' => self::$config['appVersion'],
+                    'serverHostname' => gethostname(),
+                    "ubtVersion" => Config\Config::$ubtVersion
+                ];
 
-            self::$logger = new Logger('logger');
+                self::$LOG_LEVEL = env('UBT_LOG_LEVEL', 'DEBUG');
 
-            $this->initFileStream();
+                $dateFormat = "c";
+                $output = "%datetime% %level_name% %message%\n";
+                self::$formatter = new LineFormatter($output, $dateFormat);
 
-            // 发送到redis
-            if (env('UBT_REDIS')) {
-                $this->initRedisStream();
-            } else if (env('UBT_AMQP_URL')) {
-                $this->initAMQPStream();
+                self::$logger = new Logger('logger');
+
+                self::installDriver('file');
+                // 发送到redis
+                if (env('UBT_REDIS')) {
+                    self::installDriver('redis');
+                } else if (env('UBT_AMQP_URL')) {
+                    self::installDriver('amqp');
+                }
+
+//                dd(config('ubt'));
             }
-
+        } catch (Throwable $exception) {
+            try {
+                Sentry\init(['dsn' => 'https://74a17d6ba5d7452b8987457ef9904c8b@o484937.ingest.sentry.io/5538818']);
+                Sentry\captureException($exception);
+            } catch (Throwable $e) {}
         }
     }
 
-    /**
-     * 存储到本地文件系统。这个只用来调试，不会发往es
-     */
-    protected function initFileStream() {
-        // 发送到文件
-        $streamHandler = new RotatingFileHandler(storage_path() . '/logs/ubt-redis.log', 7, self::$LOG_LEVEL);
-        $streamHandler->setFormatter(self::$formatter);
-        self::$logger->pushHandler($streamHandler);
-    }
-
-    /**
-     * 存储到Redis
-     */
-    protected function initRedisStream() {
-        $redisHandler = new RedisHandler(new Client(env('UBT_REDIS')), "ubt-logs", self::$LOG_LEVEL);
-        $redisHandler->setFormatter(self::$formatter);
-        self::$logger->pushHandler($redisHandler);
-    }
-
-    /**
-     * 存储到RabbitMQ
-     */
-    protected function initAMQPStream() {
-        $exchangeName = env('UBT_AMQP_EXCHANGE', 'exchange-ubt-logs');
-        $queueName = env('UBT_AMQP_QUEUE', 'queue-ubt-logs');
-
-        $url = parse_url(getenv('UBT_AMQP_URL'));
-        $connection = new AMQPStreamConnection($url['host'], $url['port'], $url['user'], $url['pass'], substr($url['path'], 1));
-        $channel = $connection->channel();
-
-        $channel->exchange_declare($exchangeName, 'direct', false, true, false); //声明初始化交换机
-        $channel->queue_declare($queueName, false, true, false, false);
-
-        $msgTypeArr = [
-            'debug.logger',
-            'info.logger',
-            'error.logger',
-            'warning.logger',
-            'notice.logger',
-            'critical.logger',
-            'alert.logger',
-            'emergency.logger',
-        ];
-        foreach ($msgTypeArr as $msgType) {
-            $channel->queue_bind($queueName, $exchangeName, $msgType);
-        }
-
-        $mqHandler = new AmqpHandler($channel, $exchangeName, self::$LOG_LEVEL);
-        $mqHandler->setFormatter(self::$formatter);
-        self::$logger->pushHandler($mqHandler);
-    }
-
-    static function setBaseParams($params = [])
+    static function debug($msg, $json = [])
     {
-        self::$baseParams = array_merge(self::$baseParams, $params);
+        self::base('debug', $msg, $json);
     }
 
-    function debug($msg, $json = [])
+    static function info($msg, $json = [])
     {
-        $this->base('debug', $msg, $json);
+        self::base('info', $msg, $json);
     }
 
-    function info($msg, $json = [])
+    static function notice($msg, $json = [])
     {
-        $this->base('info', $msg, $json);
+        self::base('notice', $msg, $json);
     }
 
-    function notice($msg, $json = [])
+    static function warning($msg, $json = [])
     {
-        $this->base('notice', $msg, $json);
+        self::base('warning', $msg, $json);
     }
 
-    function warning($msg, $json = [])
+    static function error($msg, $json = [])
     {
-        $this->base('warning', $msg, $json);
+        self::base('error', $msg, $json);
     }
 
-    function error($msg, $json = [])
+    static function critical($msg, $json = [])
     {
-        $this->base('error', $msg, $json);
+        self::base('critical', $msg, $json);
     }
 
-    function critical($msg, $json = [])
+    static function alert($msg, $json = [])
     {
-        $this->base('critical', $msg, $json);
+        self::base('alert', $msg, $json);
     }
 
-    function alert($msg, $json = [])
+    static function emergency($msg, $json = [])
     {
-        $this->base('alert', $msg, $json);
+        self::base('emergency', $msg, $json);
     }
 
-    function emergency($msg, $json = [])
+    static function sendError(\Throwable $e)
     {
-        $this->base('emergency', $msg, $json);
-    }
-
-    /**
-     * 发送Error
-     * @param Throwable $e
-     */
-    function sendError(\Throwable $e)
-    {
-        $this->error([
+        self::error([
             'error.msg' => $e->getMessage(),
             'error.code' => $e->getCode(),
             'error.stacks' => $e->getTraceAsString(),
@@ -172,11 +125,29 @@ class UBT
         ]);
     }
 
-    private function base($logLevel, $msg, $json = [])
+    private static function base($logLevel, $msg, $json = [])
     {
         try {
+            self::initLogger();
             $formatData = Utils::formatMsg(self::$baseParams, $msg, $json);
             self::$logger->{$logLevel}($formatData);
-        } catch (\Throwable $e) {}
+        } catch (\Throwable $e) {
+            Sentry\captureException($e);
+        }
+    }
+
+    private static function installDriver($driverName = 'file') {
+        $logger = self::$logger;
+        $formatter = self::$formatter;
+        $LOG_LEVEL = self::$LOG_LEVEL;
+        $logLevel = Utils::formatLogLevel($LOG_LEVEL);
+        switch ($driverName) {
+            case "redis":
+                return new RedisDriver($logger, $formatter, $logLevel);
+            case "amqp":
+                return new AMQPDriver($logger, $formatter, $logLevel);
+            default:
+                return new FileDriver($logger, $formatter, $logLevel);
+        }
     }
 }
