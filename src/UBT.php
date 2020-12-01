@@ -116,7 +116,7 @@ class UBT
 
     static function sendError(\Throwable $e)
     {
-        self::error([
+        self::error('', [
             'error.msg' => $e->getMessage(),
             'error.code' => $e->getCode(),
             'error.stacks' => $e->getTraceAsString(),

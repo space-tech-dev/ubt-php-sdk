@@ -60,7 +60,6 @@ class Utils
 
     static function formatMsg($baseParams, $msg, $json = [])
     {
-        // 如果msg不是字符串，那么只会接受一个msg，
         $formatData = json_encode(array_merge($baseParams, [
             "msg" => $msg,
         ], $json));

@@ -25,7 +25,8 @@ class AMQPDriver implements Driver
         $queueName = env('UBT_AMQP_QUEUE', 'queue-ubt-logs');
 
         $url = parse_url(getenv('UBT_AMQP_URL'));
-        $connection = new AMQPStreamConnection($url['host'], $url['port'], $url['user'], $url['pass'], substr($url['path'], 1));
+        $port = isset($url['port']) ? $url['port'] : 5672;
+        $connection = new AMQPStreamConnection($url['host'], $port, $url['user'], $url['pass'], substr($url['path'], 1));
         $channel = $connection->channel();
 
         $channel->exchange_declare($exchangeName, 'direct', false, true, false); //声明初始化交换机
