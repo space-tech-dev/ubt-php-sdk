@@ -1,101 +1,122 @@
 <?php
 
 namespace ArtisanCloud\UBT;
-use Exception;
-use Logger;
+
+use ArtisanCloud\UBT\Drivers\AMQPDriver;
+use ArtisanCloud\UBT\Drivers\FileDriver;
+use ArtisanCloud\UBT\Drivers\RedisDriver;
+use Illuminate\Config\Repository;
+use Illuminate\Contracts\Foundation\Application;
+use Sentry;
 use Throwable;
+use Monolog\Logger;
+use Monolog\Formatter\LineFormatter;
 
 class UBT
 {
-    protected static $channel = "log4php";
-    protected static $logger;
-    protected $baseParams = [];
+    private static $logger;
+    protected static $baseParams = [];
+    /**
+     * @var LineFormatter
+     */
+    private static $formatter;
+    /**
+     * @var int
+     */
+    private static $LOG_LEVEL;
+    /**
+     * @var array|Repository|Application|mixed
+     */
+    private static $config;
 
     public function __construct()
     {
-        if (!self::$logger) {
-            self::$logger = Logger::getLogger(self::$channel);
-            Logger::configure(array(
-                'rootLogger' => array(
-                    'level' => env("UBT_LOG_LEVEL", "INFO"),
-                    'appenders' => array('default'),
-                ),
-                'loggers' => array(
-                    'dev' => array(
-                        'level' => 'DEBUG',
-                        'appenders' => array('default'),
-                    ),
-                ),
-                'appenders' => array(
-                    'default' => array(
-                        'class' => 'LoggerAppenderRollingFile',
-                        'layout' => array(
-                            'class' => 'LoggerLayoutPattern',
-                            'params' => [
-                                'conversionPattern' => "%date %-5level %msg%n",
-                            ]
-                        ),
-                        'params' => [
-                            'file' => storage_path().'/ubt-log/ubt.log',
-                            'maxFileSize' => '10MB',
-                            'maxBackupIndex' => 10,
-                        ],
-                    ),
-                ),
-            ));
-            $this->baseParams = [
-                'APP_ENV' => env('APP_ENV')
-            ];
+
+    }
+
+    private static function initLogger() {
+        try {
+            if (!self::$logger) {
+                Sentry\init(['dsn' => 'https://74a17d6ba5d7452b8987457ef9904c8b@o484937.ingest.sentry.io/5538818']);
+
+                self::$config = Utils::getConfig();
+                self::$baseParams = [
+//                    'logType' => 'log',
+                    'appName' => self::$config['appName'],
+                    'appVersion' => self::$config['appVersion'],
+                    'serverHostname' => gethostname(),
+                    "ubtVersion" => Config\Config::$ubtVersion
+                ];
+
+                self::$LOG_LEVEL = env('UBT_LOG_LEVEL', 'DEBUG');
+
+                $dateFormat = "c";
+                $output = "%datetime% %level_name% %message%\n";
+                self::$formatter = new LineFormatter($output, $dateFormat);
+
+                self::$logger = new Logger('logger');
+
+                self::installDriver('file');
+                // 发送到redis
+                if (env('UBT_REDIS')) {
+                    self::installDriver('redis');
+                } else if (env('UBT_AMQP_URL')) {
+                    self::installDriver('amqp');
+                }
+
+//                dd(config('ubt'));
+            }
+        } catch (Throwable $exception) {
+            try {
+                Sentry\init(['dsn' => 'https://74a17d6ba5d7452b8987457ef9904c8b@o484937.ingest.sentry.io/5538818']);
+                Sentry\captureException($exception);
+            } catch (Throwable $e) {}
         }
     }
 
-    static function config($config) {
-        Logger::configure($config);
-        return Logger::getRootLogger();
+    static function debug($msg, $json = [])
+    {
+        self::base('debug', $msg, $json);
     }
 
-    function setBaseParams($params = []) {
-        $this->baseParams = array_merge();
+    static function info($msg, $json = [])
+    {
+        self::base('info', $msg, $json);
     }
 
-    function debug($msg, $json = []) {
-        $this->base('debug', $msg, $json);
+    static function notice($msg, $json = [])
+    {
+        self::base('notice', $msg, $json);
     }
 
-    function info($msg, $json = []) {
-        $this->base('info', $msg, $json);
+    static function warning($msg, $json = [])
+    {
+        self::base('warning', $msg, $json);
     }
 
-    function notice($msg, $json = []) {
-        $this->base('notice', $msg, $json);
+    static function error($msg, $json = [])
+    {
+        self::base('error', $msg, $json);
     }
 
-    function warn($msg, $json = []) {
-        $this->base('warn', $msg, $json);
+    static function critical($msg, $json = [])
+    {
+        self::base('critical', $msg, $json);
     }
 
-    function error($msg, $json = []) {
-        $this->base('error', $msg, $json);
+    static function alert($msg, $json = [])
+    {
+        self::base('alert', $msg, $json);
     }
 
-    function critical($msg, $json = []) {
-        $this->base('critical', $msg, $json);
+    static function emergency($msg, $json = [])
+    {
+        self::base('emergency', $msg, $json);
     }
 
-    function alert($msg, $json = []) {
-        $this->base('alert', $msg, $json);
-    }
-
-    function emerg($msg, $json = []) {
-        $this->base('emerg', $msg, $json);
-    }
-
-    /**
-     * 发送Error
-     * @param Throwable $e
-     */
-    function sendError(\Throwable $e) {
-        $this->error([
+    static function sendError(\Throwable $e)
+    {
+        self::error([
             'error.msg' => $e->getMessage(),
             'error.code' => $e->getCode(),
             'error.stacks' => $e->getTraceAsString(),
@@ -104,34 +125,29 @@ class UBT
         ]);
     }
 
-    private function base($logLevel, $msg, $json = []) {
-
-        // 如果msg不是字符串，那么只会接受一个msg，
-        if (gettype($msg) !== 'string') {
-            try {
-                $formatData = json_encode(array_merge($this->baseParams, $msg));
-            } catch (Exception $e) {
-                if (Utils::isNoEnvProduction()) {
-                    throw $e;
-                }
-                return;
-            }
-        } else {
-            $formatData = json_encode(array_merge($this->baseParams, [
-                "msg" => $msg,
-                "logLevel" => strtoupper($logLevel)
-            ], $json));
+    private static function base($logLevel, $msg, $json = [])
+    {
+        try {
+            self::initLogger();
+            $formatData = Utils::formatMsg(self::$baseParams, $msg, $json);
+            self::$logger->{$logLevel}($formatData);
+        } catch (\Throwable $e) {
+            Sentry\captureException($e);
         }
+    }
 
-        switch ($logLevel) {
-            case 'info':
-            case 'debug':
-            case 'error':
-            case 'warn':
-                self::$logger->{$logLevel}($formatData);
-                break;
+    private static function installDriver($driverName = 'file') {
+        $logger = self::$logger;
+        $formatter = self::$formatter;
+        $LOG_LEVEL = self::$LOG_LEVEL;
+        $logLevel = Utils::formatLogLevel($LOG_LEVEL);
+        switch ($driverName) {
+            case "redis":
+                return new RedisDriver($logger, $formatter, $logLevel);
+            case "amqp":
+                return new AMQPDriver($logger, $formatter, $logLevel);
             default:
-                self::$logger->error($formatData);
+                return new FileDriver($logger, $formatter, $logLevel);
         }
     }
 }

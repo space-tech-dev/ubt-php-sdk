@@ -1,6 +1,0 @@
-
-log4php.appender.default = LoggerAppenderDailyFile
-log4php.appender.default.layout = LoggerLayoutPattern
-log4php.appender.default.datePattern = Ymd
-log4php.appender.default.file = ${storagePath}/ubt-log/daily_%s.log
-log4php.rootLogger = DEBUG, default

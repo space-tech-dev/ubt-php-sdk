@@ -9,9 +9,13 @@
     }
   ],
   "require": {
-    "apache/log4php": "2.3.0",
-    "laravel/framework": "~7.15",
-    "ext-json": "*"
+    "laravel/framework": ">7.15",
+    "ext-json": "*",
+    "monolog/monolog": "^2.1",
+    "predis/predis": "^1.1",
+    "php-amqplib/php-amqplib": "^2.12",
+    "html2text/html2text": "^4.3",
+    "sentry/sdk": "^3.0"
   },
   "autoload": {
     "psr-4": {
