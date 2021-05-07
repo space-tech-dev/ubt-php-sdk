@@ -5,6 +5,7 @@ use ArtisanCloud\UBT\Utils;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AmqpHandler;
 use Monolog\Logger;
+use PhpAmqpLib\Connection\AMQPSSLConnection;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use Psr\Log\LogLevel;
 
@@ -25,8 +26,19 @@ class AMQPDriver implements Driver
         $queueName = env('UBT_AMQP_QUEUE', 'queue-ubt-logs');
 
         $url = parse_url(getenv('UBT_AMQP_URL'));
-        $port = isset($url['port']) ? $url['port'] : 5672;
-        $connection = new AMQPStreamConnection($url['host'], $port, $url['user'], $url['pass'], substr($url['path'], 1));
+        $vhost = ($url['path'] == '/' || !isset($url['path'])) ? '/' : substr($url['path'], 1);
+//        dd($url['host'], $port, $url['user'], $url['pass'], substr($url['path'], 1));
+
+        if($url['scheme'] === "amqps") {
+            $port = isset($port) ? $port : 5671;
+            $ssl_opts = array(
+                'capath' => '/etc/ssl/certs'
+            );
+            $connection = new AMQPSSLConnection($url['host'], $port, $url['user'], $url['pass'], $vhost, $ssl_opts);
+        } else {
+            $port = isset($port) ? $port : 5672;
+            $connection = new AMQPStreamConnection($url['host'], $port, $url['user'], $url['pass'], $vhost);
+        }
         $channel = $connection->channel();
 
         $channel->exchange_declare($exchangeName, 'direct', false, true, false); //声明初始化交换机

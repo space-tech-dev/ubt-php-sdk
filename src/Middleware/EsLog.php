@@ -46,7 +46,8 @@ class EsLog
 
             // 尝试获取返回数据类型
             try {
-                $contentType = $response->headers->all()['content-type'][0];
+                $headers = $response->headers->all();
+                $contentType = isset($headers) ? $headers['content-type'][0] : "unknown";
             } catch (\Throwable $e) {
                 $contentType = "unknown content type, ".$e->getMessage();
             }
