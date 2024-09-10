@@ -37,7 +37,10 @@ class EsLog
                 'api' => $apiMethod,
                 'postData' => json_encode($request->all()),
                 'ua' => $request->header('user-agent'),
+                'decodedToken' => json_encode($decodedToken), // Add this line
             ];
+
+            
 
             if (is_array($decodedToken) && isset($decodedToken['account']) && is_array($decodedToken['account'])) {
                 if (isset($decodedToken['account']['personmobilephone'])) {
@@ -149,11 +152,22 @@ class EsLog
             if (count($tokenParts) != 3) {
                 return null;
             }
-            $payload = base64_decode($tokenParts[1]);
+            $payload = $this->base64UrlDecode($tokenParts[1]);
             return json_decode($payload, true);
         } catch (\Exception $e) {
             // 记录错误或根据需要处理
+            Log::error('Token decoding error: ' . $e->getMessage());
             return null;
         }
+    }
+
+    private function base64UrlDecode(string $input): string
+    {
+        $remainder = strlen($input) % 4;
+        if ($remainder) {
+            $padlen = 4 - $remainder;
+            $input .= str_repeat('=', $padlen);
+        }
+        return base64_decode(strtr($input, '-_', '+/'));
     }
 }
