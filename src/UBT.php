@@ -7,7 +7,6 @@ use ArtisanCloud\UBT\Drivers\FileDriver;
 use ArtisanCloud\UBT\Drivers\RedisDriver;
 use Illuminate\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\Facades\Log;
 use Throwable;
 use Monolog\Logger;
 use Monolog\Formatter\LineFormatter;
@@ -62,9 +61,7 @@ class UBT
                 }
             }
         } catch (Throwable $exception) {
-            Log::error('Error initializing UBT logger: ' . $exception->getMessage(), [
-                'exception' => $exception
-            ]);
+           
         }
     }
 
@@ -126,9 +123,7 @@ class UBT
             $formatData = Utils::formatMsg(self::$baseParams, $msg, $json);
             self::$logger->{$logLevel}($formatData);
         } catch (\Throwable $e) {
-            Log::error('Error in UBT logging: ' . $e->getMessage(), [
-                'exception' => $e
-            ]);
+            
         }
     }
 

@@ -6,7 +6,6 @@ use Closure;
 use Html2Text\Html2Text;
 use Illuminate\Http\Request;
 use ArtisanCloud\UBT\UBT;
-use Illuminate\Support\Facades\Log;
 
 class EsLog
 {
@@ -36,8 +35,7 @@ class EsLog
                 "id" => $requestId,
                 'api' => $apiMethod,
                 'postData' => json_encode($request->all()),
-                'ua' => $request->header('user-agent'),
-                'decodedToken' => json_encode($decodedToken), // Add this line
+                'ua' => $request->header('user-agent')
             ];
 
             
@@ -103,12 +101,6 @@ class EsLog
 
             return $response;
         } catch (\Exception $e) {
-            // 使用 Laravel 的日志系统记录错误
-            Log::error('Error in EsLog middleware: ' . $e->getMessage(), [
-                'exception' => $e,
-                'request' => $request->all()
-            ]);
-
             if (!isset($response)) {
                 return $next($request);
             }
@@ -134,7 +126,7 @@ class EsLog
 
     private function extractToken(Request $request): ?string
     {
-        $header = $request->header('Authorization');
+        $header = $request->header('Authorization', '');
         if (strpos($header, 'Bearer ') === 0) {
             return substr($header, 7);
         }
