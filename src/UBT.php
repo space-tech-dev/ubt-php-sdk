@@ -7,7 +7,7 @@ use ArtisanCloud\UBT\Drivers\FileDriver;
 use ArtisanCloud\UBT\Drivers\RedisDriver;
 use Illuminate\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
-use Sentry;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 use Monolog\Logger;
 use Monolog\Formatter\LineFormatter;
@@ -37,11 +37,8 @@ class UBT
     private static function initLogger() {
         try {
             if (!self::$logger) {
-                Sentry\init(['dsn' => 'https://74a17d6ba5d7452b8987457ef9904c8b@o484937.ingest.sentry.io/5538818']);
-
                 self::$config = Utils::getConfig();
                 self::$baseParams = [
-//                    'logType' => 'log',
                     'appName' => self::$config['appName'],
                     'appVersion' => self::$config['appVersion'],
                     'serverHostname' => gethostname(),
@@ -63,14 +60,11 @@ class UBT
                 } else if (env('UBT_AMQP_URL')) {
                     self::installDriver('amqp');
                 }
-
-//                dd(config('ubt'));
             }
         } catch (Throwable $exception) {
-            try {
-                Sentry\init(['dsn' => 'https://74a17d6ba5d7452b8987457ef9904c8b@o484937.ingest.sentry.io/5538818']);
-                Sentry\captureException($exception);
-            } catch (Throwable $e) {}
+            Log::error('Error initializing UBT logger: ' . $exception->getMessage(), [
+                'exception' => $exception
+            ]);
         }
     }
 
@@ -132,7 +126,9 @@ class UBT
             $formatData = Utils::formatMsg(self::$baseParams, $msg, $json);
             self::$logger->{$logLevel}($formatData);
         } catch (\Throwable $e) {
-            Sentry\captureException($e);
+            Log::error('Error in UBT logging: ' . $e->getMessage(), [
+                'exception' => $e
+            ]);
         }
     }
 
