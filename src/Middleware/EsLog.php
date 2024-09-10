@@ -19,32 +19,42 @@ class EsLog
      */
     public function handle(Request $request, Closure $next)
     {
-
         try {
-            // 记录requestId，和method。 requestId用于追踪同一个请求链路。
             $requestId = $request->header('requestId', uniqid());
             $apiMethod = $request->header('method');
             $laravelStart = defined('LARAVEL_START') ? LARAVEL_START : microtime(true);
 
+            $token = $this->extractToken($request);
+            $decodedToken = $this->decodeToken($token);
+
+            $reqInfo = [
+                "url" => $request->url(),
+                "method" => $request->method(),
+                "path" => $request->path(),
+                "ip" => $request->getClientIp(),
+                "query" => json_encode($request->query()),
+                "id" => $requestId,
+                'api' => $apiMethod,
+                'postData' => json_encode($request->all()),
+                'ua' => $request->header('user-agent'),
+            ];
+
+            if (is_array($decodedToken) && isset($decodedToken['account']) && is_array($decodedToken['account'])) {
+                if (isset($decodedToken['account']['personmobilephone'])) {
+                    $reqInfo['mobile'] = $decodedToken['account']['personmobilephone'];
+                }
+                if (isset($decodedToken['account']['uuid'])) {
+                    $reqInfo['accountUUID'] = $decodedToken['account']['uuid'];
+                }
+            }
+
             UBT::info('', [
                 'logType' => 'request',
-                'req' => [
-                    "url" => $request->url(),
-                    "method" => $request->method(),
-                    "path" => $request->path(),
-                    "ip" => $request->getClientIp(),
-                    "query" => json_encode($request->query()),
-                    "id" => $requestId,
-                    'api' => $apiMethod,
-                    'postData' => json_encode($request->all()),
-                    'ua' => $request->header('user-agent')
-                ],
+                'req' => $reqInfo,
             ]);
 
-            // 等待返回结果
             $response = $next($request);
 
-            // 尝试获取返回数据类型
             try {
                 $headers = $response->headers->all();
                 $contentType = isset($headers) ? $headers['content-type'][0] : "unknown";
@@ -53,7 +63,6 @@ class EsLog
             }
 
             try {
-                // 返回内容
                 $resMsg = [
                     'logType' => 'response',
                     'req' => [
@@ -68,16 +77,22 @@ class EsLog
                         'data' => '***'
                     ]
                 ];
+
+                // 将 mobile 和 accountUUID 添加到返回值中
+                if (isset($reqInfo['mobile'])) {
+                    $resMsg['req']['mobile'] = $reqInfo['mobile'];
+                }
+                if (isset($reqInfo['accountUUID'])) {
+                    $resMsg['req']['accountUUID'] = $reqInfo['accountUUID'];
+                }
+
                 $originalData = $response->getOriginalContent();
 
                 if (env("UBT_LOG_LEVEL", 'DEBUG') === "DEBUG") {
-                    // 如果日志等级为DEBUG，那么将会输出尝试记录全部返回data。
                     $resMsg['res']['data'] = $this->formatResData($response, $contentType);
                 } else if ($response->status() !== 200) {
-                    // http code不等于200，记录下全部data。
                     $resMsg['res']['data'] = $this->formatResData($response, $contentType);
                 } else if (isset($originalData['meta']) && isset($originalData['meta']['return_code']) && $originalData['meta']['return_code'] !== 200) {
-                    // 如果返回了自定义的错误，那么也记录一下对应的值
                     $resMsg['res']['data'] = $this->formatResData($response, $contentType);
                 }
                 UBT::info('', $resMsg);
@@ -107,5 +122,33 @@ class EsLog
         }
 
         return $data;
+    }
+
+    private function extractToken(Request $request): ?string
+    {
+        $header = $request->header('Authorization');
+        if (strpos($header, 'Bearer ') === 0) {
+            return substr($header, 7);
+        }
+        return null;
+    }
+
+    private function decodeToken(?string $token): ?array
+    {
+        if (!$token) {
+            return null;
+        }
+
+        try {
+            $tokenParts = explode('.', $token);
+            if (count($tokenParts) != 3) {
+                return null;
+            }
+            $payload = base64_decode($tokenParts[1]);
+            return json_decode($payload, true);
+        } catch (\Exception $e) {
+            // 记录错误或根据需要处理
+            return null;
+        }
     }
 }
